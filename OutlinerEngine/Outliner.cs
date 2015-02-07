@@ -13,10 +13,19 @@ namespace OutlinerEngine
         private Dictionary<Color, Color> m_colorMap = new Dictionary<Color,Color>();
         
         // Our input picture - the picture we want to outline with Outline().
-        public Image InputPicture { get; set; }
+        public Image InputImage { get; set; }
         
         // Our output picture - the result of outlining with Outline().
-        public Image OutputPicture { get; set; }
+        public Image OutputImage { get; }
+
+        /// <summary>
+        /// Constructs an Outliner object with InputImage initialized.
+        /// </summary>
+        /// <param name="inputImage">The image to be converted.</param>
+        public Outliner(Image inputImage)
+        {
+            InputImage = inputImage;
+        }
 
         /// <summary>
         /// Adds a new Color to Color relationship to the outliner.

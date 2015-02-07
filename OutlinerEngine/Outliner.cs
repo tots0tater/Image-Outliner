@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace OutlinerEngine
 {
     /// <summary>
-    /// 
+    /// Simulates a range of colors.
     /// </summary>
     public struct ColorRange
     {
@@ -22,11 +22,18 @@ namespace OutlinerEngine
         /// Detects whether the input color is in the color range.
         /// </summary>
         /// <param name="inputColor">The color to be checked.</param>
-        /// <returns></returns>
-        public bool isInRange(Color inputColor)
+        /// <returns>Whether the input color is in the color range.</returns>
+        public bool IsInRange(Color inputColor)
         {
-            //TODO
-            return true;
+            // We will check each colors' hue.
+            float inputHue = inputColor.GetHue();
+            float lowHue = LowColor.GetHue();
+            float highHue = HighColor.GetHue();
+
+            // If the input hue is between the low hue and the high hue, return true.
+            // Otherwise, return false.
+            if(inputHue >= lowHue && inputHue <= highHue) return true;
+            return false;
         }
     }
 

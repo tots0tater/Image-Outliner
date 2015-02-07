@@ -7,6 +7,32 @@ using System.Threading.Tasks;
 
 namespace OutlinerEngine
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    public struct ColorRange
+    {
+        // The low end of our color range.
+        public Color LowColor { get; set; }
+
+        // The high end of our color range.
+        public Color HighColor { get; set; }
+
+        /// <summary>
+        /// Detects whether the input color is in the color range.
+        /// </summary>
+        /// <param name="inputColor">The color to be checked.</param>
+        /// <returns></returns>
+        public bool isInRange(Color inputColor)
+        {
+            //TODO
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// Our main class for the engine - outlines images.
+    /// </summary>
     public class Outliner
     {
         // Maps input colors to output colors for the Outline() method.

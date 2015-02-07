@@ -39,7 +39,7 @@ namespace Image_Outliner
 				// and allow the image processing to begin
 				Image inputImage = Image.FromFile(openFileDialog.FileName);
 				pictureBox1.Image = inputImage;
-				outliner.InputPicture = inputImage;
+				outliner.InputImage = inputImage;
 			}
 		}
 
@@ -52,7 +52,7 @@ namespace Image_Outliner
 		private void outlineImageToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			outliner.Outline();
-			Image outputPicture = outliner.OutputPicture;
+			Image outputPicture = outliner.OutputImage;
 			pictureBox1.Image = outputPicture;
 		}
 

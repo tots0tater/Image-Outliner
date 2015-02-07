@@ -57,14 +57,24 @@ namespace OutlinerEngine
     /// </summary>
     public class Outliner
     {
+        private Image m_inputImage;
+        private Image m_outputImage;
+
         // Maps input color ranges to output colors for the Outline() method.
         private List<KeyValuePair<ColorRange, Color>> m_colorMap = new List<KeyValuePair<ColorRange, Color>>();
         
         // Our input picture - the picture we want to outline with Outline().
-        public Image InputImage { get; set; }
+        public Image InputImage
+        {
+            get { return m_inputImage; }
+            set { m_inputImage = value; }
+        }
         
         // Our output picture - the result of outlining with Outline().
-        public Image OutputImage { get; }
+        public Image OutputImage
+        {
+            get { return m_outputImage; }
+        }
 
         /// <summary>
         /// Constructs an Outliner object with InputImage initialized.

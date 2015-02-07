@@ -12,11 +12,26 @@ namespace OutlinerEngine
     /// </summary>
     public struct ColorRange
     {
+        private Color m_lowColor;
+        private Color m_highColor;
+
+        private ColorRange(Color lowColor, Color highColor)
+        {
+            m_lowColor = lowColor;
+            m_highColor = highColor;
+        }
+
         // The low end of our color range.
-        public Color LowColor { get; }
+        public Color LowColor
+        {
+            get { return m_lowColor; }
+        }
 
         // The high end of our color range.
-        public Color HighColor { get; }
+        public Color HighColor
+        {
+            get { return m_highColor; }
+        }
 
         /// <summary>
         /// Detects whether the input color is in the color range.

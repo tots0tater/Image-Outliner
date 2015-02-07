@@ -51,29 +51,13 @@ namespace Image_Outliner
 		/// <param name="e"></param>
 		private void outlineImageToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			m_outliner.MapColor(new ColorRange(), outlineColorTextBox.BackColor);
 			m_outliner.Outline();
 			Image outputPicture = m_outliner.OutputImage;
 			pictureBox1.Image = outputPicture;
 		}
 
 		#region Main/Low/High/Outline Color
-		/// <summary>
-		/// Sets and displays the color the user picks for the main color. The main 
-		/// color is the color the user wants to outline.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void mainColorButton_Click(object sender, EventArgs e)
-		{
-			ColorDialog dialog = new ColorDialog();
-
-			if (dialog.ShowDialog() == DialogResult.OK)
-			{
-				Color backgroundColor = dialog.Color;
-				mainColorTextBox.BackColor = backgroundColor;
-			}
-		}
-
 		/// <summary>
 		/// Sets and displays the color the user picks for the low range. The low
 		/// range is for detecting colors that will be accepted for the outline.
@@ -129,6 +113,5 @@ namespace Image_Outliner
         {
 
         }
-
 	}
 }

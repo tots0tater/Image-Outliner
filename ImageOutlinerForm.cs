@@ -13,12 +13,12 @@ namespace Image_Outliner
 {
 	public partial class ImageOutlinerForm : Form
 	{
-		private Outliner outliner;
+		private Outliner m_outliner;
 		
 		public ImageOutlinerForm()
 		{
 			InitializeComponent();
-			outliner = new Outliner();
+			m_outliner = new Outliner();
 			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
 		}
 
@@ -39,7 +39,7 @@ namespace Image_Outliner
 				// and allow the image processing to begin
 				Image inputImage = Image.FromFile(openFileDialog.FileName);
 				pictureBox1.Image = inputImage;
-				outliner.InputImage = inputImage;
+				m_outliner.InputImage = inputImage;
 			}
 		}
 
@@ -51,11 +51,18 @@ namespace Image_Outliner
 		/// <param name="e"></param>
 		private void outlineImageToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			outliner.Outline();
-			Image outputPicture = outliner.OutputImage;
+			m_outliner.Outline();
+			Image outputPicture = m_outliner.OutputImage;
 			pictureBox1.Image = outputPicture;
 		}
 
+		#region Main/Low/High/Outline Color
+		/// <summary>
+		/// Sets and displays the color the user picks for the main color. The main 
+		/// color is the color the user wants to outline.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void mainColorButton_Click(object sender, EventArgs e)
 		{
 			ColorDialog dialog = new ColorDialog();
@@ -67,19 +74,61 @@ namespace Image_Outliner
 			}
 		}
 
+		/// <summary>
+		/// Sets and displays the color the user picks for the low range. The low
+		/// range is for detecting colors that will be accepted for the outline.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void lowColorButton_Click(object sender, EventArgs e)
 		{
+			ColorDialog dialog = new ColorDialog();
 
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+				Color backgroundColor = dialog.Color;
+				lowColorTextBox.BackColor = backgroundColor;
+			}
 		}
 
+		/// <summary>
+		/// Sets and displays the color the user picks for the high range. The high
+		/// range is for detecting colors that will be accepted for the outline.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void highColorButton_Click(object sender, EventArgs e)
 		{
+			ColorDialog dialog = new ColorDialog();
 
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+				Color backgroundColor = dialog.Color;
+				highColorTextBox.BackColor = backgroundColor;
+			}
 		}
 
-        private void ImageOutlinerForm_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Sets and displays the color the user picks for the outline. 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void outlineColorButton_Click(object sender, EventArgs e)
+		{
+			ColorDialog dialog = new ColorDialog();
+
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+				Color backgroundColor = dialog.Color;
+				outlineColorTextBox.BackColor = backgroundColor;
+			}
+		}
+		#endregion
+
+		private void ImageOutlinerForm_Load(object sender, EventArgs e)
         {
 
         }
+
 	}
 }

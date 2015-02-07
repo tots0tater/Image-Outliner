@@ -30,10 +30,6 @@ namespace OutlinerEngine
             m_colorMap.Add(inColor, outColor);
         }
 
-
-        //this is test
-
-
         /// <summary>
         /// Outline the picture.
         /// </summary>

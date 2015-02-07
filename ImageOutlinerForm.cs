@@ -44,6 +44,8 @@ namespace Image_Outliner
 				Bitmap bmpImage = new Bitmap(inputImage); 
 
 				m_outliner.InputImage = bmpImage;
+
+
 			}
 		}
 
@@ -120,7 +122,7 @@ namespace Image_Outliner
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void loadImageButton_Click(object sender, EventArgs e)
         {
             loadImageToolStripMenuItem_Click(sender, e);
         }

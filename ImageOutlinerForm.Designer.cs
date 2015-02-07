@@ -44,9 +44,9 @@
             this.highColorLabel = new System.Windows.Forms.Label();
             this.lowColorTextBox = new System.Windows.Forms.TextBox();
             this.lowColorLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.imageLocationTextbox = new System.Windows.Forms.TextBox();
+            this.loadImageButton = new System.Windows.Forms.Button();
+            this.imageLocationLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.imageProperties.SuspendLayout();
@@ -103,7 +103,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Location = new System.Drawing.Point(0, 99);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(604, 426);
+            this.pictureBox1.Size = new System.Drawing.Size(604, 369);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -208,41 +208,45 @@
             this.lowColorLabel.TabIndex = 2;
             this.lowColorLabel.Text = "Low Color:";
             // 
-            // textBox1
+            // imageLocationTextbox
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(101, 533);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(454, 20);
-            this.textBox1.TabIndex = 3;
+            this.imageLocationTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.imageLocationTextbox.BackColor = System.Drawing.SystemColors.Window;
+            this.imageLocationTextbox.Location = new System.Drawing.Point(99, 474);
+            this.imageLocationTextbox.Name = "imageLocationTextbox";
+            this.imageLocationTextbox.Size = new System.Drawing.Size(454, 20);
+            this.imageLocationTextbox.TabIndex = 3;
             // 
-            // button1
+            // loadImageButton
             // 
-            this.button1.Location = new System.Drawing.Point(561, 531);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.loadImageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadImageButton.Location = new System.Drawing.Point(559, 472);
+            this.loadImageButton.Name = "loadImageButton";
+            this.loadImageButton.Size = new System.Drawing.Size(31, 23);
+            this.loadImageButton.TabIndex = 5;
+            this.loadImageButton.Text = "...";
+            this.loadImageButton.UseVisualStyleBackColor = true;
+            this.loadImageButton.Click += new System.EventHandler(this.loadImageButton_Click);
             // 
-            // label1
+            // imageLocationLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 535);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Image Location:";
+            this.imageLocationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.imageLocationLabel.AutoSize = true;
+            this.imageLocationLabel.Location = new System.Drawing.Point(10, 476);
+            this.imageLocationLabel.Name = "imageLocationLabel";
+            this.imageLocationLabel.Size = new System.Drawing.Size(83, 13);
+            this.imageLocationLabel.TabIndex = 6;
+            this.imageLocationLabel.Text = "Image Location:";
             // 
             // ImageOutlinerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 562);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(604, 577);
+            this.Controls.Add(this.imageLocationLabel);
+            this.Controls.Add(this.loadImageButton);
+            this.Controls.Add(this.imageLocationTextbox);
             this.Controls.Add(this.imageProperties);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
@@ -279,9 +283,9 @@
 		private System.Windows.Forms.Button outlineColorButton;
 		private System.Windows.Forms.TextBox outlineColorTextBox;
 		private System.Windows.Forms.Label outlineColorLabel;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox imageLocationTextbox;
+        private System.Windows.Forms.Button loadImageButton;
+        private System.Windows.Forms.Label imageLocationLabel;
 	}
 }
 

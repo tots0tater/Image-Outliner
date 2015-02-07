@@ -12,25 +12,25 @@ namespace OutlinerEngine
     /// </summary>
     public struct ColorRange
     {
-        private Color m_lowColor;
-        private Color m_highColor;
-
-        public ColorRange(Color lowColor, Color highColor)
+        private Color m_darkColor;
+        private Color m_lightColor;
+        
+        public ColorRange(Color darkColor, Color lightColor)
         {
-            m_lowColor = lowColor;
-            m_highColor = highColor;
+            m_darkColor = darkColor;
+            m_lightColor = lightColor;
         }
 
         // The low end of our color range.
         public Color LowColor
         {
-            get { return m_lowColor; }
+            get { return m_darkColor; }
         }
 
         // The high end of our color range.
         public Color HighColor
         {
-            get { return m_highColor; }
+            get { return m_lightColor; }
         }
 
         /// <summary>
@@ -40,13 +40,21 @@ namespace OutlinerEngine
         /// <returns>Whether the input color is in the color range.</returns>
         public bool IsInRange(Color inputColor)
         {
+            byte maxR = Math.Max(LowColor.R, HighColor.R);
+            byte maxG = Math.Max(LowColor.G, HighColor.G);
+            byte maxB = Math.Max(LowColor.B, HighColor.B);
+
+            byte minR = Math.Min(LowColor.R, HighColor.R);
+            byte minG = Math.Min(LowColor.G, HighColor.G);
+            byte minB = Math.Min(LowColor.B, HighColor.B);
+
             // If the input red, green, and blue values are between the low color and the high color's red, green, and blue values, return true.
             // Otherwise, return false.
-            if (inputColor.R >= LowColor.R && inputColor.R <= HighColor.R)
+            if (inputColor.R >= minR && inputColor.R <= maxR)
             {
-                if (inputColor.G >= LowColor.G && inputColor.G <= HighColor.G)
+                if (inputColor.G >= minG && inputColor.G <= maxG)
                 {
-                    if (inputColor.B >= LowColor.B && inputColor.B <= HighColor.B)
+                    if (inputColor.B >= minB && inputColor.B <= maxB)
                     {
                         return true;
                     }
@@ -114,6 +122,7 @@ namespace OutlinerEngine
         /// </summary>
         public void Outline()
         {
+            
             // Initializing our output image to the same size as our input image
 			m_outputImage = new Bitmap(m_inputImage.Width, m_inputImage.Height);
 			for (int y = 0; y < m_inputImage.Height; y++)

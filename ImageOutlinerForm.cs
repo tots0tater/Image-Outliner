@@ -115,5 +115,10 @@ namespace Image_Outliner
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loadImageToolStripMenuItem_Click(sender, e);
+        }
 	}
 }

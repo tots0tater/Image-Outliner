@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image-Outliner", "Image-Outliner.csproj", "{04D2DAFE-6874-49FE-8291-B6F0489CCE88}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2BE16D6D-CEF9-424D-9515-112BDE34F49A} = {2BE16D6D-CEF9-424D-9515-112BDE34F49A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlinerEngine", "OutlinerEngine\OutlinerEngine.csproj", "{2BE16D6D-CEF9-424D-9515-112BDE34F49A}"
 EndProject

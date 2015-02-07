@@ -21,8 +21,7 @@ namespace OutlinerEngine
         /// <summary>
         /// Adds a new Color to Color relationship to the outliner.
         /// Example:
-        ///     //Now, all pixels in the black range will be blue in the output image.
-        ///     MapColor(Color.Black, Color.Blue)
+        ///     MapColor(Color.Black, Color.Blue) //Now, all pixels in the black range will be blue in the output image.
         /// </summary>
         /// <param name="inColor">The "from" color - the color in the original picture to be replaced.</param>
         /// <param name="outColor">The "to" color - the color in the new picture to replace the old color.</param>

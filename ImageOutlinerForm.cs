@@ -13,6 +13,8 @@ namespace Image_Outliner
 {
 	public partial class ImageOutlinerForm : Form
 	{
+		private Outliner outliner;
+		
 		public ImageOutlinerForm()
 		{
 			InitializeComponent();
@@ -33,7 +35,7 @@ namespace Image_Outliner
 
 		private void outlineImageToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			
 		}
 	}
 }

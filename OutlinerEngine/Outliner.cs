@@ -15,7 +15,7 @@ namespace OutlinerEngine
         private Color m_lowColor;
         private Color m_highColor;
 
-        private ColorRange(Color lowColor, Color highColor)
+        public ColorRange(Color lowColor, Color highColor)
         {
             m_lowColor = lowColor;
             m_highColor = highColor;
@@ -86,7 +86,7 @@ namespace OutlinerEngine
         }
 
         /// <summary>
-        /// Constructs an Outliner object.
+        /// Constructs an empty Outliner object.
         /// </summary>
         public Outliner()
         {

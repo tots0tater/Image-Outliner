@@ -30,6 +30,21 @@ namespace Image_Outliner
 		/// <param name="e"></param>
 		private void loadImageToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+
+            //TEST
+            Console.WriteLine("Color    | Hue   ");
+            Console.WriteLine("White    | " + Color.White.GetHue());
+            Console.WriteLine("Black    | " + Color.Black.GetHue());
+            Console.WriteLine("Gray     | " + Color.Gray.GetHue());
+            Console.WriteLine("Red      | " + Color.Red.GetHue());
+            Console.WriteLine("Orange   | " + Color.Orange.GetHue());
+            Console.WriteLine("Yellow   | " + Color.Yellow.GetHue());
+            Console.WriteLine("Green    | " + Color.Green.GetHue());
+            Console.WriteLine("Blue     | " + Color.Blue.GetHue());
+            Console.WriteLine("Purple   | " + Color.Purple.GetHue());
+            //TEST
+
+
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 			openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
 

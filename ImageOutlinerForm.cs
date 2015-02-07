@@ -39,7 +39,11 @@ namespace Image_Outliner
 				// and allow the image processing to begin
 				Image inputImage = Image.FromFile(openFileDialog.FileName);
 				pictureBox1.Image = inputImage;
-				m_outliner.InputImage = inputImage;
+				
+				// This is so we can know the explicit type of image we are dealing with.
+				Bitmap bmpImage = new Bitmap(inputImage); 
+
+				m_outliner.InputImage = bmpImage;
 			}
 		}
 

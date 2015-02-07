@@ -40,14 +40,19 @@ namespace OutlinerEngine
         /// <returns>Whether the input color is in the color range.</returns>
         public bool IsInRange(Color inputColor)
         {
-            // We will check each colors' hue.
-            float inputHue = inputColor.GetHue();
-            float lowHue = LowColor.GetHue();
-            float highHue = HighColor.GetHue();
-
-            // If the input hue is between the low hue and the high hue, return true.
+            // If the input red, green, and blue values are between the low color and the high color's red, green, and blue values, return true.
             // Otherwise, return false.
-            if(inputHue >= lowHue && inputHue <= highHue) return true;
+            if (inputColor.R >= LowColor.R && inputColor.R <= HighColor.R)
+            {
+                if (inputColor.G >= LowColor.G && inputColor.G <= HighColor.G)
+                {
+                    if (inputColor.B >= LowColor.B && inputColor.B <= HighColor.B)
+                    {
+                        return true;
+                    }
+                }
+            }
+
             return false;
         }
     }

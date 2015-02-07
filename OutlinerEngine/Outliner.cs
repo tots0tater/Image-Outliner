@@ -62,21 +62,21 @@ namespace OutlinerEngine
     /// </summary>
     public class Outliner
     {
-        private Image m_inputImage;
-        private Image m_outputImage;
+        private Bitmap m_inputImage;
+        private Bitmap m_outputImage;
 
         // Maps input color ranges to output colors for the Outline() method.
         private List<KeyValuePair<ColorRange, Color>> m_colorMap = new List<KeyValuePair<ColorRange, Color>>();
         
         // Our input picture - the picture we want to outline with Outline().
-        public Image InputImage
+        public Bitmap InputImage
         {
             get { return m_inputImage; }
             set { m_inputImage = value; }
         }
         
         // Our output picture - the result of outlining with Outline().
-        public Image OutputImage
+        public Bitmap OutputImage
         {
             get { return m_outputImage; }
         }
@@ -85,7 +85,7 @@ namespace OutlinerEngine
         /// Constructs an Outliner object with InputImage initialized.
         /// </summary>
         /// <param name="inputImage">The image to be converted.</param>
-        public Outliner(Image inputImage)
+		public Outliner(Bitmap inputImage)
         {
             InputImage = inputImage;
         }
@@ -114,11 +114,22 @@ namespace OutlinerEngine
         /// </summary>
         public void Outline()
         {
-            /* TODO:
-             * Go through pixels in image
-             * Check if pixels are in range for each key in the color map using m_colorMap.
-             * 
-             */
+            // Initializing our output image to the same size as our input image
+			m_outputImage = new Bitmap(m_inputImage.Width, m_inputImage.Height);
+			for (int y = 0; y < m_inputImage.Height; y++)
+			{
+				for (int x = 0 ; x < m_inputImage.Width; x++)
+				{
+					Color currentPixel = m_inputImage.GetPixel(x, y);
+					foreach (KeyValuePair<ColorRange, Color> colorMap in m_colorMap)
+					{
+						if (colorMap.Key.IsInRange(currentPixel))
+							m_outputImage.SetPixel(x, y, colorMap.Value);
+						else
+							m_outputImage.SetPixel(x, y, Color.White);
+					}
+				}
+			}
         }
     }
 }

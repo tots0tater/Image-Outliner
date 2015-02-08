@@ -28,7 +28,6 @@ namespace Image_Outliner
 			InitializeComponent();
 			m_outliner = new Outliner();
 
-			tabPage2.Text = "Outline Method 1"; tabPage1.Text = "Outline Method 2";
 			setTextboxColors(m_outlineColor, outlineColorTextBox);
 			setTextboxColors(m_outlineColor, outlineColorTextBox2);
 			setTextboxColors(m_backgroundColor, backgroundTextBox);

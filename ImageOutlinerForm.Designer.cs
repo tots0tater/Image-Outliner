@@ -46,7 +46,6 @@
 			this.editingMethodTabs = new System.Windows.Forms.TabControl();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.transparentToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.trackBarDarkLabel = new System.Windows.Forms.Label();
 			this.baseColorLabel = new System.Windows.Forms.Label();
@@ -80,16 +79,17 @@
 			this.darkDropper = new System.Windows.Forms.Button();
 			this.lightDropper = new System.Windows.Forms.Button();
 			this.imageProperties1 = new System.Windows.Forms.GroupBox();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.menuStrip1.SuspendLayout();
 			this.imageControlGroup.SuspendLayout();
 			this.editingMethodTabs.SuspendLayout();
 			this.tabPage2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.leftTrackBar)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.rightTrackBar)).BeginInit();
 			this.tabPage1.SuspendLayout();
 			this.imageProperties1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -225,8 +225,8 @@
 			this.transparentCheckBox.Size = new System.Drawing.Size(83, 17);
 			this.transparentCheckBox.TabIndex = 19;
 			this.transparentCheckBox.Text = "Transparent";
-			this.transparentToolTip.SetToolTip(this.transparentCheckBox, "Check this box if you want your image to be transparent.\r\n        WARNING: Only ." +
-        "png files support this mode.");
+			this.transparentToolTip.SetToolTip(this.transparentCheckBox, "Check this box if you want your image to be transparent.\r\nWARNING: Only .png file" +
+        "s can be exported in this mode.");
 			this.transparentCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// editingMethodTabs
@@ -252,18 +252,6 @@
 			this.tabPage2.TabIndex = 0;
 			this.tabPage2.Text = "Outline Method 2";
 			this.tabPage2.UseVisualStyleBackColor = true;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox1.Location = new System.Drawing.Point(0, 154);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(1009, 526);
-			this.pictureBox1.TabIndex = 10;
-			this.pictureBox1.TabStop = false;
-			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
 			// 
 			// groupBox1
 			// 
@@ -554,7 +542,7 @@
 			// lightColorButton
 			// 
 			this.lightColorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.lightColorButton.Location = new System.Drawing.Point(580, 53);
+			this.lightColorButton.Location = new System.Drawing.Point(578, 53);
 			this.lightColorButton.Name = "lightColorButton";
 			this.lightColorButton.Size = new System.Drawing.Size(100, 24);
 			this.lightColorButton.TabIndex = 14;
@@ -605,7 +593,7 @@
 			// lightDropper
 			// 
 			this.lightDropper.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.lightDropper.Location = new System.Drawing.Point(675, 53);
+			this.lightDropper.Location = new System.Drawing.Point(677, 53);
 			this.lightDropper.Name = "lightDropper";
 			this.lightDropper.Size = new System.Drawing.Size(18, 24);
 			this.lightDropper.TabIndex = 24;
@@ -637,6 +625,18 @@
 			this.imageProperties1.TabStop = false;
 			this.imageProperties1.Text = "Outline Image Properties";
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox1.Location = new System.Drawing.Point(0, 154);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(1009, 526);
+			this.pictureBox1.TabIndex = 10;
+			this.pictureBox1.TabStop = false;
+			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+			// 
 			// ImageOutlinerForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -658,7 +658,6 @@
 			this.imageControlGroup.PerformLayout();
 			this.editingMethodTabs.ResumeLayout(false);
 			this.tabPage2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.leftTrackBar)).EndInit();
@@ -666,6 +665,7 @@
 			this.tabPage1.ResumeLayout(false);
 			this.imageProperties1.ResumeLayout(false);
 			this.imageProperties1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

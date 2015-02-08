@@ -78,6 +78,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -116,7 +117,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Image-Outliner.ico" />
+    <None Include="Resources\X.bmp" />
+    <None Include="Images\Dropper %28REAL SMALL%29.png" />
+    <Content Include="Images\Dropper.png" />
+    <Content Include="Images\Image-Outliner.ico" />
+    <Content Include="Images\X.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

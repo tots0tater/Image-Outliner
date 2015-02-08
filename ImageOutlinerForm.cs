@@ -366,9 +366,9 @@ namespace Image_Outliner
                 setTextboxColors(color, darkColorTextBox);
                 setTextboxColors(color, darkColorTextBox2);
 
-                //TODO
-                //baseDropper.Image = DropperImage;
-                baseDropper.Text = "t";
+				baseDropper.Image = Image_Outliner.Properties.Resources.Dropper__REAL_SMALL_;
+
+                //baseDropper.Text = "t";
             }
             else if (lightDropper.Enabled == true)
             {
@@ -376,9 +376,8 @@ namespace Image_Outliner
                 setTextboxColors(color, lightColorTextBox);
                 setTextboxColors(color, lightColorTextBox2);
 
-                //TODO
-                //baseDropper.Image = DropperImage;
-                lightDropper.Text = "t";
+				lightDropper.Image = Image_Outliner.Properties.Resources.Dropper__REAL_SMALL_;
+                //lightDropper.Text = "t";
             }
             else if (darkDropper.Enabled == true)
             {
@@ -386,9 +385,7 @@ namespace Image_Outliner
                 setTextboxColors(color, darkColorTextBox);
                 setTextboxColors(color, darkColorTextBox2);
 
-                //TODO
-                //baseDropper.Image = DropperImage;
-                darkDropper.Text = "t";
+				darkDropper.Image = Image_Outliner.Properties.Resources.Dropper__REAL_SMALL_;
             }
 
             m_selectingColor = false;
@@ -436,9 +433,8 @@ namespace Image_Outliner
             editToolStripMenuItem.Enabled = false;
             helpToolStripMenuItem.Enabled = false;
 
-            //TODO
-            //baseDropper.Image = CancelImage;
-            baseDropper.Text = "x";
+            //baseDropper.Text = "x";
+			baseDropper.Image = Image_Outliner.Properties.Resources.X;
         }
 
         private void darkDropper_Click(object sender, EventArgs e)
@@ -463,9 +459,10 @@ namespace Image_Outliner
             editToolStripMenuItem.Enabled = false;
             helpToolStripMenuItem.Enabled = false;
 
-            //TODO
-            //baseDropper.Image = CancelImage;
-            darkDropper.Text = "x";
+            //darkDropper.Text = "x";
+			darkDropper.Image = Image_Outliner.Properties.Resources.X;
+
+			
         }
 
         private void lightDropper_Click(object sender, EventArgs e)
@@ -490,9 +487,8 @@ namespace Image_Outliner
             editToolStripMenuItem.Enabled = false;
             helpToolStripMenuItem.Enabled = false;
 
-            //TODO
-            //baseDropper.Image = CancelImage;
-            lightDropper.Text = "x";
+            //lightDropper.Text = "x";
+			lightDropper.Image = Image_Outliner.Properties.Resources.X;
         }
 	}
 }

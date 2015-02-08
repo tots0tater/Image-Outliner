@@ -39,13 +39,13 @@ namespace OutlinerEngine
         }
 
         // The low end of our color range.
-        public Color LowColor
+        public Color DarkColor
         {
             get { return m_darkColor; }
         }
 
         // The high end of our color range.
-        public Color HighColor
+        public Color LightColor
         {
             get { return m_lightColor; }
         }
@@ -57,13 +57,13 @@ namespace OutlinerEngine
         /// <returns>Whether the input color is in the color range.</returns>
         public bool IsInRange(Color inputColor)
         {
-            byte maxR = Math.Max(LowColor.R, HighColor.R);
-            byte maxG = Math.Max(LowColor.G, HighColor.G);
-            byte maxB = Math.Max(LowColor.B, HighColor.B);
+            byte maxR = Math.Max(DarkColor.R, LightColor.R);
+            byte maxG = Math.Max(DarkColor.G, LightColor.G);
+            byte maxB = Math.Max(DarkColor.B, LightColor.B);
 
-            byte minR = Math.Min(LowColor.R, HighColor.R);
-            byte minG = Math.Min(LowColor.G, HighColor.G);
-            byte minB = Math.Min(LowColor.B, HighColor.B);
+            byte minR = Math.Min(DarkColor.R, LightColor.R);
+            byte minG = Math.Min(DarkColor.G, LightColor.G);
+            byte minB = Math.Min(DarkColor.B, LightColor.B);
 
             // If the input red, green, and blue values are between the low color and the high color's red, green, and blue values, return true.
             // Otherwise, return false.
@@ -165,6 +165,18 @@ namespace OutlinerEngine
             m_colorMap.Add(new KeyValuePair<ColorRange,Color>(inRange, outColor));
         }
 
+		public bool IsOverlap(ColorRange range)
+		{
+			Color light = range.LightColor, dark = range.DarkColor;
+			foreach (KeyValuePair<ColorRange, Color> kvp in m_colorMap)
+			{
+				if (kvp.Key.IsInRange(light) || kvp.Key.IsInRange(dark))
+					return true;
+			}
+
+			return false;
+		}
+
         /// <summary>
         /// Outline the picture.
         /// </summary>
@@ -186,7 +198,6 @@ namespace OutlinerEngine
 				m_outputImage.LockBits(rectangle, System.Drawing.Imaging.ImageLockMode.ReadWrite,
 				m_outputImage.PixelFormat);
              */
-
 			
 			for (int y = 0; y < m_inputImage.Height; y++)
 			{
@@ -201,5 +212,12 @@ namespace OutlinerEngine
 				}
 			}
         }
+
+		public void Reset()
+		{
+			m_outputImage = null;
+			m_backgroundColor = Color.White;
+			m_colorMap.Clear();
+		}
     }
 }

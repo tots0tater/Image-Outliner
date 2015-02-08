@@ -34,8 +34,7 @@ namespace OutlinerEngine
         /// <param name="rSensitivity">The integer number to decrease r, g, and b from the base color.</param>
         public ColorRange(Color baseColor, int lSensitivity, int rSensitivity)
         {
-            //TODO: Figure out how trackbar values work to know whether to + or - l sensitivity.
-            m_darkColor = Color.FromArgb(baseColor.R + lSensitivity, baseColor.G + lSensitivity, baseColor.B + lSensitivity);
+            m_darkColor = Color.FromArgb(baseColor.R - lSensitivity, baseColor.G - lSensitivity, baseColor.B - lSensitivity);
             m_lightColor = Color.FromArgb(baseColor.R + rSensitivity, baseColor.G + rSensitivity, baseColor.B + rSensitivity);
         }
 

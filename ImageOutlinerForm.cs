@@ -21,6 +21,7 @@ namespace Image_Outliner
 		private Color m_outlineColor = Color.Black;
 		private Color m_baseColor;
 		private Color m_backgroundColor = Color.White;
+        private bool m_selectingColor = false;
 
 		public ImageOutlinerForm()
 		{
@@ -111,11 +112,6 @@ namespace Image_Outliner
 			}
 		}
 
-		/// <summary>
-		/// Sets and displays the color the user picks for the outline. 
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
 		private void outlineColorButton_Click(object sender, EventArgs e)
 		{
 			ColorDialog dialog = new ColorDialog();
@@ -126,6 +122,11 @@ namespace Image_Outliner
 				setTextboxColors(m_outlineColor, outlineColorTextBox2);	// sets the textbox in method 2
 			}
 		}
+        
+        private void outlineColorButton2_Click(object sender, EventArgs e)
+        {
+            outlineColorButton_Click(sender, e);
+        }
 
 		private void backgroundButton_Click(object sender, EventArgs e)
 		{
@@ -162,16 +163,6 @@ namespace Image_Outliner
                 leftTrackBar.Enabled = true;
                 rightTrackBar.Enabled = true;
 			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void outlineTrackBarColorButton_Click(object sender, EventArgs e)
-		{
-			outlineColorButton_Click(sender, e);
 		}
 
 		/// <summary>
@@ -346,5 +337,58 @@ namespace Image_Outliner
 				m_outfile.Save(saveFileDialog.FileName, format);
 			}
 		}
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Bitmap bmpImage = pictureBox1.Image as Bitmap;
+            Color color = bmpImage.GetPixel(e.X, e.Y);
+        }
+
+
+        private void baseDropper_Click(object sender, EventArgs e)
+        {
+            m_selectingColor = true;
+
+            //Disable other buttons.
+            backgroundButton.Enabled = false;
+            backgroundButton2.Enabled = false;
+            outlineColorButton.Enabled = false;
+            outlineColorButton2.Enabled = false;
+            lightColorButton.Enabled = false;
+            darkColorButton.Enabled = false;
+
+            //TODO
+            //baseDropper.Image = CancelImage;
+            baseDropper.Text = "x";
+
+            //YOU ARE HERE
+        }
+
+        private void darkDropper_Click(object sender, EventArgs e)
+        {
+            m_selectingColor = true;
+
+            //Disable other buttons.
+            backgroundButton.Enabled = false;
+            backgroundButton2.Enabled = false;
+            outlineColorButton.Enabled = false;
+            outlineColorButton2.Enabled = false;
+            lightColorButton.Enabled = false;
+            baseColorButton.Enabled = false;
+        }
+
+        private void lightDropper_Click(object sender, EventArgs e)
+        {
+            m_selectingColor = true;
+
+            //Disable other buttons.
+            backgroundButton.Enabled = false;
+            backgroundButton2.Enabled = false;
+            outlineColorButton.Enabled = false;
+            outlineColorButton2.Enabled = false;
+            darkColorButton.Enabled = false;
+            baseColorButton.Enabled = false;
+        }
+
 	}
 }

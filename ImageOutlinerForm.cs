@@ -33,6 +33,11 @@ namespace Image_Outliner
 			setTextboxColors(m_outlineColor, outlineColorTextBox2);
 			setTextboxColors(m_backgroundColor, backgroundTextBox);
 			setTextboxColors(m_backgroundColor, backgroundTextBox2);
+
+            //Start with droppers disabled.
+            lightDropper.Enabled = false;
+            darkDropper.Enabled = false;
+            baseDropper.Enabled = false;
 		}
 
 		private void ImageOutlinerForm_Load(object sender, EventArgs e)
@@ -73,6 +78,11 @@ namespace Image_Outliner
 
                 // Set the accompanying textbox's text to the file name.
                 imageLocationTextbox.Text = openFileDialog.FileName;
+
+                //Droppers can now be used.
+                lightDropper.Enabled = true;
+                darkDropper.Enabled = true;
+                baseDropper.Enabled = true;
 			}
 		}
 
@@ -340,8 +350,67 @@ namespace Image_Outliner
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            if (!m_selectingColor) return;
+
             Bitmap bmpImage = pictureBox1.Image as Bitmap;
             Color color = bmpImage.GetPixel(e.X, e.Y);
+
+            if (baseDropper.Enabled == true)
+            {
+                m_baseColor = color;
+                m_lightColor = color;
+                m_darkColor = color;
+                setTextboxColors(color, baseColorTextBox);
+                setTextboxColors(color, lightColorTextBox);
+                setTextboxColors(color, lightColorTextBox2);
+                setTextboxColors(color, darkColorTextBox);
+                setTextboxColors(color, darkColorTextBox2);
+
+                //TODO
+                //baseDropper.Image = DropperImage;
+                baseDropper.Text = "t";
+            }
+            else if (lightDropper.Enabled == true)
+            {
+                m_lightColor = color;
+                setTextboxColors(color, lightColorTextBox);
+                setTextboxColors(color, lightColorTextBox2);
+
+                //TODO
+                //baseDropper.Image = DropperImage;
+                lightDropper.Text = "t";
+            }
+            else if (darkDropper.Enabled == true)
+            {
+                m_darkColor = color;
+                setTextboxColors(color, darkColorTextBox);
+                setTextboxColors(color, darkColorTextBox2);
+
+                //TODO
+                //baseDropper.Image = DropperImage;
+                darkDropper.Text = "t";
+            }
+
+            m_selectingColor = false;
+
+            //Re-enable other buttons, toolbars, and other things.
+            backgroundButton.Enabled = true;
+            backgroundButton2.Enabled = true;
+            outlineColorButton.Enabled = true;
+            outlineColorButton2.Enabled = true;
+            lightColorButton.Enabled = true;
+            darkColorButton.Enabled = true;
+            baseColorButton.Enabled = true;
+            loadImageButton.Enabled = true;
+            outlineButton.Enabled = true;
+            lightDropper.Enabled = true;
+            darkDropper.Enabled = true;
+            baseDropper.Enabled = true;
+            transparentCheckBox.Enabled = true;
+            imageLocationTextbox.Enabled = true;
+            fileToolStripMenuItem.Enabled = true;
+            editToolStripMenuItem.Enabled = true;
+            helpToolStripMenuItem.Enabled = true;
         }
 
 
@@ -349,46 +418,81 @@ namespace Image_Outliner
         {
             m_selectingColor = true;
 
-            //Disable other buttons.
+            //Disable other buttons, toolbars, and other things.
             backgroundButton.Enabled = false;
             backgroundButton2.Enabled = false;
             outlineColorButton.Enabled = false;
             outlineColorButton2.Enabled = false;
             lightColorButton.Enabled = false;
             darkColorButton.Enabled = false;
+            baseColorButton.Enabled = false;
+            loadImageButton.Enabled = false;
+            outlineButton.Enabled = false;
+            darkDropper.Enabled = false;
+            lightDropper.Enabled = false;
+            transparentCheckBox.Enabled = false;
+            imageLocationTextbox.Enabled = false;
+            fileToolStripMenuItem.Enabled = false;
+            editToolStripMenuItem.Enabled = false;
+            helpToolStripMenuItem.Enabled = false;
 
             //TODO
             //baseDropper.Image = CancelImage;
             baseDropper.Text = "x";
-
-            //YOU ARE HERE
         }
 
         private void darkDropper_Click(object sender, EventArgs e)
         {
             m_selectingColor = true;
 
-            //Disable other buttons.
+            //Disable other buttons, toolbars, and other things.
             backgroundButton.Enabled = false;
             backgroundButton2.Enabled = false;
             outlineColorButton.Enabled = false;
             outlineColorButton2.Enabled = false;
             lightColorButton.Enabled = false;
+            darkColorButton.Enabled = false;
             baseColorButton.Enabled = false;
+            loadImageButton.Enabled = false;
+            outlineButton.Enabled = false;
+            lightDropper.Enabled = false;
+            baseDropper.Enabled = false;
+            transparentCheckBox.Enabled = false;
+            imageLocationTextbox.Enabled = false;
+            fileToolStripMenuItem.Enabled = false;
+            editToolStripMenuItem.Enabled = false;
+            helpToolStripMenuItem.Enabled = false;
+
+            //TODO
+            //baseDropper.Image = CancelImage;
+            darkDropper.Text = "x";
         }
 
         private void lightDropper_Click(object sender, EventArgs e)
         {
             m_selectingColor = true;
 
-            //Disable other buttons.
+            //Disable other buttons, toolbars, and other things.
             backgroundButton.Enabled = false;
             backgroundButton2.Enabled = false;
             outlineColorButton.Enabled = false;
             outlineColorButton2.Enabled = false;
+            lightColorButton.Enabled = false;
             darkColorButton.Enabled = false;
             baseColorButton.Enabled = false;
-        }
+            loadImageButton.Enabled = false;
+            outlineButton.Enabled = false;
+            darkDropper.Enabled = false;
+            baseDropper.Enabled = false;
+            transparentCheckBox.Enabled = false;
+            imageLocationTextbox.Enabled = false;
+            fileToolStripMenuItem.Enabled = false;
+            editToolStripMenuItem.Enabled = false;
+            helpToolStripMenuItem.Enabled = false;
 
+            //TODO
+            //baseDropper.Image = CancelImage;
+            lightDropper.Text = "x";
+        }
 	}
 }

@@ -147,12 +147,12 @@ namespace Image_Outliner
 		{
 			textBox.BackColor = backgroundColor;
 			// Sets the font color to be visible on the text box's background
-			if (backgroundColor.R + backgroundColor.G + backgroundColor.B < 250)
+			if (backgroundColor.R + backgroundColor.G + backgroundColor.B > 500)
 				textBox.ForeColor = Color.Black;
 			else
 				textBox.ForeColor = Color.White;
 
-			textBox.Text = "R: " + backgroundColor.R + " G: " + backgroundColor.G + " B: " + backgroundColor.B;
+			textBox.Text = "R: " + backgroundColor.R + "  G: " + backgroundColor.G + "  B: " + backgroundColor.B;
 		}
 		#endregion
 

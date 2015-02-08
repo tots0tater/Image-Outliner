@@ -55,20 +55,20 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.outlineTrackBarColorButton = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.lightColorTextBox2 = new System.Windows.Forms.TextBox();
+            this.trackBarLightLabel = new System.Windows.Forms.Label();
+            this.darkColorTextBox2 = new System.Windows.Forms.TextBox();
+            this.rightTrackBar = new System.Windows.Forms.TrackBar();
+            this.leftTrackBar = new System.Windows.Forms.TrackBar();
             this.trackBarOutlineLabel = new System.Windows.Forms.Label();
             this.baseColorButton = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.baseColorLabel = new System.Windows.Forms.Label();
             this.trackBarDarkLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.trackBarLightLabel = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.outlineTrackBarColorButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.imageControlGroup.SuspendLayout();
@@ -77,9 +77,9 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rightTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -369,11 +369,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.outlineTrackBarColorButton);
             this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.lightColorTextBox2);
             this.groupBox1.Controls.Add(this.trackBarLightLabel);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.trackBar3);
-            this.groupBox1.Controls.Add(this.trackBar1);
+            this.groupBox1.Controls.Add(this.darkColorTextBox2);
+            this.groupBox1.Controls.Add(this.rightTrackBar);
+            this.groupBox1.Controls.Add(this.leftTrackBar);
             this.groupBox1.Controls.Add(this.trackBarOutlineLabel);
             this.groupBox1.Controls.Add(this.baseColorButton);
             this.groupBox1.Controls.Add(this.textBox2);
@@ -386,13 +386,83 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Outline Image Properties";
             // 
-            // textBox1
+            // outlineTrackBarColorButton
             // 
-            this.textBox1.Location = new System.Drawing.Point(491, 155);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(44, 20);
-            this.textBox1.TabIndex = 10;
+            this.outlineTrackBarColorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.outlineTrackBarColorButton.Location = new System.Drawing.Point(699, 68);
+            this.outlineTrackBarColorButton.Name = "outlineTrackBarColorButton";
+            this.outlineTrackBarColorButton.Size = new System.Drawing.Size(105, 24);
+            this.outlineTrackBarColorButton.TabIndex = 18;
+            this.outlineTrackBarColorButton.Text = "Pick Outline Color";
+            this.outlineTrackBarColorButton.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox5.Location = new System.Drawing.Point(694, 42);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(116, 20);
+            this.textBox5.TabIndex = 17;
+            // 
+            // lightColorTextBox2
+            // 
+            this.lightColorTextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lightColorTextBox2.Location = new System.Drawing.Point(514, 42);
+            this.lightColorTextBox2.Name = "lightColorTextBox2";
+            this.lightColorTextBox2.ReadOnly = true;
+            this.lightColorTextBox2.Size = new System.Drawing.Size(116, 20);
+            this.lightColorTextBox2.TabIndex = 16;
+            // 
+            // trackBarLightLabel
+            // 
+            this.trackBarLightLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.trackBarLightLabel.AutoSize = true;
+            this.trackBarLightLabel.Location = new System.Drawing.Point(544, 21);
+            this.trackBarLightLabel.Name = "trackBarLightLabel";
+            this.trackBarLightLabel.Size = new System.Drawing.Size(60, 13);
+            this.trackBarLightLabel.TabIndex = 15;
+            this.trackBarLightLabel.Text = "Light Color:";
+            // 
+            // darkColorTextBox2
+            // 
+            this.darkColorTextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.darkColorTextBox2.Location = new System.Drawing.Point(6, 42);
+            this.darkColorTextBox2.Name = "darkColorTextBox2";
+            this.darkColorTextBox2.ReadOnly = true;
+            this.darkColorTextBox2.Size = new System.Drawing.Size(116, 20);
+            this.darkColorTextBox2.TabIndex = 14;
+            // 
+            // rightTrackBar
+            // 
+            this.rightTrackBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rightTrackBar.BackColor = System.Drawing.SystemColors.Window;
+            this.rightTrackBar.Enabled = false;
+            this.rightTrackBar.LargeChange = 10;
+            this.rightTrackBar.Location = new System.Drawing.Point(382, 38);
+            this.rightTrackBar.Maximum = 100;
+            this.rightTrackBar.Name = "rightTrackBar";
+            this.rightTrackBar.Size = new System.Drawing.Size(126, 45);
+            this.rightTrackBar.SmallChange = 5;
+            this.rightTrackBar.TabIndex = 5;
+            this.rightTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.rightTrackBar.Scroll += new System.EventHandler(this.rightTrackBar_Scroll);
+            // 
+            // leftTrackBar
+            // 
+            this.leftTrackBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.leftTrackBar.BackColor = System.Drawing.SystemColors.Window;
+            this.leftTrackBar.Enabled = false;
+            this.leftTrackBar.LargeChange = 10;
+            this.leftTrackBar.Location = new System.Drawing.Point(128, 38);
+            this.leftTrackBar.Maximum = 100;
+            this.leftTrackBar.Name = "leftTrackBar";
+            this.leftTrackBar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.leftTrackBar.Size = new System.Drawing.Size(126, 45);
+            this.leftTrackBar.SmallChange = 5;
+            this.leftTrackBar.TabIndex = 5;
+            this.leftTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.leftTrackBar.Scroll += new System.EventHandler(this.leftTrackBar_Scroll);
             // 
             // trackBarOutlineLabel
             // 
@@ -454,81 +524,13 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
-            // trackBar1
+            // textBox1
             // 
-            this.trackBar1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.trackBar1.BackColor = System.Drawing.SystemColors.Window;
-            this.trackBar1.Enabled = false;
-            this.trackBar1.LargeChange = 10;
-            this.trackBar1.Location = new System.Drawing.Point(128, 38);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.trackBar1.Size = new System.Drawing.Size(126, 45);
-            this.trackBar1.SmallChange = 5;
-            this.trackBar1.TabIndex = 5;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // trackBar3
-            // 
-            this.trackBar3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.trackBar3.BackColor = System.Drawing.SystemColors.Window;
-            this.trackBar3.Enabled = false;
-            this.trackBar3.LargeChange = 10;
-            this.trackBar3.Location = new System.Drawing.Point(382, 38);
-            this.trackBar3.Maximum = 100;
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(126, 45);
-            this.trackBar3.SmallChange = 5;
-            this.trackBar3.TabIndex = 5;
-            this.trackBar3.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox4.Location = new System.Drawing.Point(6, 42);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(116, 20);
-            this.textBox4.TabIndex = 14;
-            // 
-            // trackBarLightLabel
-            // 
-            this.trackBarLightLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.trackBarLightLabel.AutoSize = true;
-            this.trackBarLightLabel.Location = new System.Drawing.Point(544, 21);
-            this.trackBarLightLabel.Name = "trackBarLightLabel";
-            this.trackBarLightLabel.Size = new System.Drawing.Size(60, 13);
-            this.trackBarLightLabel.TabIndex = 15;
-            this.trackBarLightLabel.Text = "Light Color:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox3.Location = new System.Drawing.Point(514, 42);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(116, 20);
-            this.textBox3.TabIndex = 16;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox5.Location = new System.Drawing.Point(694, 42);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(116, 20);
-            this.textBox5.TabIndex = 17;
-            // 
-            // outlineTrackBarColorButton
-            // 
-            this.outlineTrackBarColorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.outlineTrackBarColorButton.Location = new System.Drawing.Point(699, 68);
-            this.outlineTrackBarColorButton.Name = "outlineTrackBarColorButton";
-            this.outlineTrackBarColorButton.Size = new System.Drawing.Size(105, 24);
-            this.outlineTrackBarColorButton.TabIndex = 18;
-            this.outlineTrackBarColorButton.Text = "Pick Outline Color";
-            this.outlineTrackBarColorButton.UseVisualStyleBackColor = true;
+            this.textBox1.Location = new System.Drawing.Point(491, 155);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(44, 20);
+            this.textBox1.TabIndex = 10;
             // 
             // ImageOutlinerForm
             // 
@@ -556,9 +558,9 @@
             this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rightTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -600,10 +602,10 @@
         private System.Windows.Forms.Label baseColorLabel;
         private System.Windows.Forms.Label trackBarDarkLabel;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TrackBar leftTrackBar;
+        private System.Windows.Forms.TextBox darkColorTextBox2;
+        private System.Windows.Forms.TrackBar rightTrackBar;
+        private System.Windows.Forms.TextBox lightColorTextBox2;
         private System.Windows.Forms.Label trackBarLightLabel;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button outlineTrackBarColorButton;

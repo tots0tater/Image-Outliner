@@ -19,6 +19,7 @@ namespace Image_Outliner
 		private Color darkColor;
 		private Color lightColor;
 		private Color outlineColor;
+        private Color m_baseColor;
 
 		public ImageOutlinerForm()
 		{
@@ -218,5 +219,15 @@ namespace Image_Outliner
 		{
 
 		}
+
+        private void leftTrackBar_Scroll(object sender, EventArgs e)
+        {
+            setTextboxColors(Color.FromArgb(m_baseColor.R // things and stuff ColleftTrackBar.Value;
+        }
+
+        private void rightTrackBar_Scroll(object sender, EventArgs e)
+        {
+
+        }
 	}
 }

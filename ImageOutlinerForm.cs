@@ -18,8 +18,9 @@ namespace Image_Outliner
 		private Image m_outfile;		// Used for the exported image
 		private Color m_darkColor;
 		private Color m_lightColor;
-		private Color m_outlineColor;
+		private Color m_outlineColor = Color.Black;
 		private Color m_baseColor;
+		private Color m_backgroundColor = Color.White;
 
 		public ImageOutlinerForm()
 		{
@@ -27,6 +28,10 @@ namespace Image_Outliner
 			m_outliner = new Outliner();
 
 			tabPage1.Text = "Outline Method 1"; tabPage2.Text = "Outline Method 2";
+			setTextboxColors(m_outlineColor, outlineColorTextBox);
+			setTextboxColors(m_outlineColor, outlineColorTextBox2);
+			setTextboxColors(m_backgroundColor, backgroundTextBox);
+			setTextboxColors(m_backgroundColor, backgroundTextBox2);
 		}
 
 		private void ImageOutlinerForm_Load(object sender, EventArgs e)
@@ -70,26 +75,6 @@ namespace Image_Outliner
 			}
 		}
 
-		/// <summary>
-		/// When the user clicks the "Outline Image..." button, the image is shown in the
-		/// winform. The user can then export the image if they choose.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void outlineImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Throw an error if there is no image to outline.
-            if (pictureBox1.Image == null)
-            {
-                MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
-                return;
-            }
-
-			m_outliner.MapColor(new ColorRange(m_lightColor, m_darkColor), outlineColorTextBox.BackColor);
-			m_outliner.Outline();
-			Image outputPicture = m_outliner.OutputImage;
-			pictureBox1.Image = outputPicture;
-		}
 
 		#region Light/Dark/Outline Color
 		/// <summary>
@@ -140,6 +125,22 @@ namespace Image_Outliner
 				setTextboxColors(m_outlineColor, outlineColorTextBox);
 				setTextboxColors(m_outlineColor, outlineColorTextBox2);	// sets the textbox in method 2
 			}
+		}
+
+		private void backgroundButton_Click(object sender, EventArgs e)
+		{
+			ColorDialog dialog = new ColorDialog();
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+				m_backgroundColor = dialog.Color;
+				setTextboxColors(m_backgroundColor, backgroundTextBox);
+				setTextboxColors(m_backgroundColor, backgroundTextBox2);
+			}
+		}
+
+		private void backgroundButton2_Click(object sender, EventArgs e)
+		{
+			backgroundButton_Click(sender, e);
 		}
 
 		/// <summary>
@@ -249,11 +250,6 @@ namespace Image_Outliner
 			// certain... things do.
 		}
 
-		private void saveImageToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-
-		}
-
         private void rightTrackBar_Scroll_1(object sender, EventArgs e)
         {
             // Get shift fromn trackbar.
@@ -293,5 +289,62 @@ namespace Image_Outliner
             setTextboxColors(newColor, darkColorTextBox);
             setTextboxColors(newColor, darkColorTextBox2);
         }
+
+		/// <summary>
+		/// When the user clicks the "Outline Image..." button, the image is shown in the
+		/// winform. The user can then export the image if they choose.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void outlineImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Throw an error if there is no image to outline.
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+                return;
+            }
+
+			m_outliner.MapColor(new ColorRange(m_lightColor, m_darkColor), outlineColorTextBox.BackColor);
+
+			if (true == transparentCheckBox.Checked)
+				m_outliner.BackgroundColor = Color.Transparent;
+			else
+				m_outliner.BackgroundColor = m_backgroundColor;
+
+			m_outliner.Outline();
+			m_outfile = m_outliner.OutputImage;
+			pictureBox1.Image = m_outfile;
+
+			saveImageToolStripMenuItem.Enabled = true;
+		}
+
+		private void saveImageToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog saveFileDialog = new SaveFileDialog();
+			System.Drawing.Imaging.ImageFormat format;
+
+			if (true == transparentCheckBox.Checked)
+				saveFileDialog.Filter = "Png Image (.png)|*.png";
+			else
+				saveFileDialog.Filter = "Png Image (.png)|*.png|JPEG Image (.jpeg)|*.jpeg|Gif Image (.gif)|*.gif|Bitmap Image (.bmp)|*.bmp";
+			if (saveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				string extension = System.IO.Path.GetExtension(saveFileDialog.FileName);
+
+				if (".jpg" == extension.ToLower() || ".jpeg" == extension.ToLower())
+					format = System.Drawing.Imaging.ImageFormat.Jpeg;
+				else if (".bmp" == extension.ToLower())
+					format = System.Drawing.Imaging.ImageFormat.Bmp;
+				else if (".gif" == extension.ToLower())
+					format = System.Drawing.Imaging.ImageFormat.Gif;
+				else if (".png" == extension.ToLower())
+					format = System.Drawing.Imaging.ImageFormat.Png;
+				else
+					format = null;		// This shouldn't happen
+
+				m_outfile.Save(saveFileDialog.FileName, format);
+			}
+		}
 	}
 }

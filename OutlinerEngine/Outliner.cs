@@ -113,6 +113,7 @@ namespace OutlinerEngine
     {
         private Bitmap m_inputImage;
         private Bitmap m_outputImage;
+		private Color m_backgroundColor = Color.White;
 
         // Maps input color ranges to output colors for the Outline() method.
         private List<KeyValuePair<ColorRange, Color>> m_colorMap = new List<KeyValuePair<ColorRange, Color>>();
@@ -129,6 +130,12 @@ namespace OutlinerEngine
         {
             get { return m_outputImage; }
         }
+
+		public Color BackgroundColor
+		{
+			get { return m_backgroundColor; }
+			set { m_backgroundColor = value; }
+		}
 
         /// <summary>
         /// Constructs an Outliner object with InputImage initialized.
@@ -165,6 +172,11 @@ namespace OutlinerEngine
         {
             // Initializing our output image to the same size as our input image
 			m_outputImage = new Bitmap(m_inputImage.Width, m_inputImage.Height);
+			using (Graphics g = Graphics.FromImage(m_outputImage))
+			{
+				Brush b = new SolidBrush(m_backgroundColor);
+				g.FillRectangle(b, 0, 0, m_outputImage.Width, m_outputImage.Height);
+			}
 
             /*
 			Rectangle rectangle = new Rectangle(0, 0, m_outputImage.Width, m_outputImage.Height);
@@ -185,8 +197,6 @@ namespace OutlinerEngine
 					{
 						if (colorMap.Key.IsInRange(currentPixel))
 							m_outputImage.SetPixel(x, y, colorMap.Value);
-						//else
-						//	m_outputImage.SetPixel(x, y, Color.White);
 					}
 				}
 			}

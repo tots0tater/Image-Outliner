@@ -47,6 +47,7 @@
             this.imageLocationTextbox = new System.Windows.Forms.TextBox();
             this.loadImageButton = new System.Windows.Forms.Button();
             this.imageLocationLabel = new System.Windows.Forms.Label();
+            this.outlineButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.imageProperties.SuspendLayout();
@@ -217,6 +218,7 @@
             this.imageLocationTextbox.Name = "imageLocationTextbox";
             this.imageLocationTextbox.Size = new System.Drawing.Size(454, 20);
             this.imageLocationTextbox.TabIndex = 3;
+            this.imageLocationTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.imageLocationTextbox_KeyDown);
             // 
             // loadImageButton
             // 
@@ -239,11 +241,23 @@
             this.imageLocationLabel.TabIndex = 6;
             this.imageLocationLabel.Text = "Image Location:";
             // 
+            // outlineButton
+            // 
+            this.outlineButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.outlineButton.Location = new System.Drawing.Point(10, 504);
+            this.outlineButton.Name = "outlineButton";
+            this.outlineButton.Size = new System.Drawing.Size(160, 61);
+            this.outlineButton.TabIndex = 7;
+            this.outlineButton.Text = "Outline!";
+            this.outlineButton.UseVisualStyleBackColor = true;
+            this.outlineButton.Click += new System.EventHandler(this.outlineButton_Click);
+            // 
             // ImageOutlinerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 577);
+            this.Controls.Add(this.outlineButton);
             this.Controls.Add(this.imageLocationLabel);
             this.Controls.Add(this.loadImageButton);
             this.Controls.Add(this.imageLocationTextbox);
@@ -286,6 +300,7 @@
         private System.Windows.Forms.TextBox imageLocationTextbox;
         private System.Windows.Forms.Button loadImageButton;
         private System.Windows.Forms.Label imageLocationLabel;
+        private System.Windows.Forms.Button outlineButton;
 	}
 }
 

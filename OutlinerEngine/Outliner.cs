@@ -124,13 +124,15 @@ namespace OutlinerEngine
         {
             // Initializing our output image to the same size as our input image
 			m_outputImage = new Bitmap(m_inputImage.Width, m_inputImage.Height);
-			Rectangle rectangle = new Rectangle(0, 0, m_outputImage.Width, m_outputImage.Height);
 			
+			/*
+			Rectangle rectangle = new Rectangle(0, 0, m_outputImage.Width, m_outputImage.Height);
 			// Referenced https://msdn.microsoft.com/en-us/library/5ey6h79d%28v=vs.80%29.aspx for this code.
 			System.Drawing.Imaging.BitmapData bmpData =
 				m_outputImage.LockBits(rectangle, System.Drawing.Imaging.ImageLockMode.ReadWrite,
 				m_outputImage.PixelFormat);
-
+			*/
+			
 			/*
 			for (int y = 0; y < m_inputImage.Height; y++)
 			{
@@ -141,8 +143,6 @@ namespace OutlinerEngine
 					{
 						if (colorMap.Key.IsInRange(currentPixel))
 							m_outputImage.SetPixel(x, y, colorMap.Value);
-						//else
-						//	m_outputImage.SetPixel(x, y, Color.White);
 					}
 				}
 			}

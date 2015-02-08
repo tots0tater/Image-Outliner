@@ -353,9 +353,66 @@ namespace Image_Outliner
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (!m_selectingColor) return;
+            
+            Color color;
+            
+            // Solution reused from http://bytes.com/topic/net/answers/645830-getting-x-y-coordinates-picturebox-image.
+            int imgWidth = pictureBox1.Image.Width;
+            int imgHeight = pictureBox1.Image.Height;
+            int boxWidth = pictureBox1.Size.Width;
+            int boxHeight = pictureBox1.Size.Height;
 
+            //This variable will hold the result
+            double X = e.X;
+            double Y = e.Y;
+
+            //Comparing the aspect ratio of both the control and the image itself.
+            if (imgWidth / imgHeight > boxWidth / boxHeight)
+            {
+                //If true, that means that the image is stretched through the width of the control.
+                //'In other words: the image is limited by the width.
+
+                //The scale of the image in the Picture Box.
+                double scale = (double)boxWidth / imgWidth;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the height
+                //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
+                double blankPart = (boxHeight - scale * imgHeight) / 2;
+
+                Y -= blankPart;
+
+                //Scaling the results.
+                X /= scale;
+                Y /= scale;
+            }
+            else
+            {
+                //If true, that means that the image is stretched through the height of the control.
+                //'In other words: the image is limited by the height.
+
+                //The scale of the image in the Picture Box.
+                double scale = (double)boxHeight / imgHeight;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the width
+                //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
+                double blankPart = (boxWidth - scale * imgWidth) / 2;
+                X -= blankPart;
+
+                //Scaling the results.
+                X /= scale;
+                Y /= scale;
+            }
+            
             Bitmap bmpImage = pictureBox1.Image as Bitmap;
-            Color color = bmpImage.GetPixel(e.X, e.Y);
+            try
+            {
+                color = bmpImage.GetPixel(Convert.ToInt32(X), Convert.ToInt32(Y));
+            }
+            catch(Exception)
+            {
+                // We can't do anything, it's out of range. Just return.
+                return;
+            }
 
             if (baseDropper.Enabled == true)
             {
@@ -369,8 +426,6 @@ namespace Image_Outliner
                 setTextboxColors(color, darkColorTextBox2);
 
 				baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
-
-                //baseDropper.Text = "t";
             }
             else if (lightDropper.Enabled == true)
             {
@@ -379,7 +434,6 @@ namespace Image_Outliner
                 setTextboxColors(color, lightColorTextBox2);
 
 				lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
-                //lightDropper.Text = "t";
             }
             else if (darkDropper.Enabled == true)
             {
@@ -441,7 +495,6 @@ namespace Image_Outliner
 
                 m_selectingColor = false;
 
-                //baseDropper.Text = "t";
                 baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 
                 return;
@@ -469,7 +522,6 @@ namespace Image_Outliner
 
             m_selectingColor = true;
 
-            //baseDropper.Text = "x";
             baseDropper.Image = Image_Outliner.Properties.Resources.Cancel;
         }
 
@@ -499,7 +551,6 @@ namespace Image_Outliner
 
                 m_selectingColor = false;
 
-                //baseDropper.Text = "t";
                 darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 
                 return;
@@ -527,7 +578,6 @@ namespace Image_Outliner
 
             m_selectingColor = true;
 
-            //darkDropper.Text = "x";
             darkDropper.Image = Image_Outliner.Properties.Resources.Cancel;
         }
 
@@ -557,7 +607,6 @@ namespace Image_Outliner
 
                 m_selectingColor = false;
 
-                //baseDropper.Text = "t";
                 lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 
                 return;
@@ -585,7 +634,6 @@ namespace Image_Outliner
 
             m_selectingColor = true;
 
-            //lightDropper.Text = "x";
 			lightDropper.Image = Image_Outliner.Properties.Resources.Cancel;
         }
 	}

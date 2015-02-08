@@ -15,11 +15,11 @@ namespace Image_Outliner
 	public partial class ImageOutlinerForm : Form
 	{
 		private Outliner m_outliner;
-		private Image m_outfile;
-		private Color darkColor;
-		private Color lightColor;
-		private Color outlineColor;
-        private Color m_baseColor;
+		private Image m_outfile;		// Used for the exported image
+		private Color m_darkColor;
+		private Color m_lightColor;
+		private Color m_outlineColor;
+		private Color m_baseColor;
 
 		public ImageOutlinerForm()
 		{
@@ -85,7 +85,7 @@ namespace Image_Outliner
                 return;
             }
 
-			m_outliner.MapColor(new ColorRange(lightColorTextBox.BackColor, darkColorTextBox.BackColor), outlineColorTextBox.BackColor);
+			m_outliner.MapColor(new ColorRange(m_lightColor, m_darkColor), outlineColorTextBox.BackColor);
 			m_outliner.Outline();
 			Image outputPicture = m_outliner.OutputImage;
 			pictureBox1.Image = outputPicture;
@@ -103,8 +103,9 @@ namespace Image_Outliner
 			ColorDialog dialog = new ColorDialog();
 			if (dialog.ShowDialog() == DialogResult.OK)
 			{
-				lightColor = dialog.Color;
-				setTextboxColors(lightColor, lightColorTextBox);
+                m_lightColor = dialog.Color;
+                setTextboxColors(m_lightColor, lightColorTextBox);
+                setTextboxColors(m_lightColor, lightColorTextBox2);
 			}
 		}
 
@@ -119,8 +120,9 @@ namespace Image_Outliner
 			ColorDialog dialog = new ColorDialog();
 			if (dialog.ShowDialog() == DialogResult.OK)
 			{
-				darkColor = dialog.Color;
-				setTextboxColors(darkColor, darkColorTextBox);
+                m_darkColor = dialog.Color;
+                setTextboxColors(m_darkColor, darkColorTextBox);
+                setTextboxColors(m_darkColor, darkColorTextBox2);
 			}
 		}
 
@@ -134,9 +136,41 @@ namespace Image_Outliner
 			ColorDialog dialog = new ColorDialog();
 			if (dialog.ShowDialog() == DialogResult.OK)
 			{
-				outlineColor = dialog.Color;
-				setTextboxColors(outlineColor, outlineColorTextBox);
+				m_outlineColor = dialog.Color;
+				setTextboxColors(m_outlineColor, outlineColorTextBox);
+				setTextboxColors(m_outlineColor, outlineColorTextBox2);	// sets the textbox in method 2
 			}
+		}
+
+		/// <summary>
+		/// The base color used for the trackbar color change implementation.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void baseColorButton_Click(object sender, EventArgs e)
+		{
+			ColorDialog dialog = new ColorDialog();
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+				m_baseColor = dialog.Color;
+                setTextboxColors(m_baseColor, baseColorTextBox);
+                setTextboxColors(m_baseColor, lightColorTextBox);
+                setTextboxColors(m_baseColor, lightColorTextBox2);
+                setTextboxColors(m_baseColor, darkColorTextBox);
+                setTextboxColors(m_baseColor, darkColorTextBox2);
+                leftTrackBar.Enabled = true;
+                rightTrackBar.Enabled = true;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void outlineTrackBarColorButton_Click(object sender, EventArgs e)
+		{
+			outlineColorButton_Click(sender, e);
 		}
 
 		/// <summary>
@@ -220,14 +254,44 @@ namespace Image_Outliner
 
 		}
 
-        private void leftTrackBar_Scroll(object sender, EventArgs e)
+        private void rightTrackBar_Scroll_1(object sender, EventArgs e)
         {
-            setTextboxColors(Color.FromArgb(m_baseColor.R // things and stuff ColleftTrackBar.Value;
+            // Get shift fromn trackbar.
+            int rightShift = rightTrackBar.Value;
+
+            // Shift but don't go over 255.
+            int newRed = m_baseColor.R + rightShift;
+            if (newRed > 255) newRed = 255;
+            int newGreen = m_baseColor.G + rightShift;
+            if (newGreen > 255) newGreen = 255;
+            int newBlue = m_baseColor.B + rightShift;
+            if (newBlue > 255) newBlue = 255;
+
+            // Get our shifted color and set background color appropriately.
+            Color newColor = Color.FromArgb(newRed, newGreen, newBlue);
+            m_lightColor = newColor;
+            setTextboxColors(newColor, lightColorTextBox);
+            setTextboxColors(newColor, lightColorTextBox2);
         }
 
-        private void rightTrackBar_Scroll(object sender, EventArgs e)
+        private void leftTrackBar_Scroll_1(object sender, EventArgs e)
         {
+            // Get shift fromn trackbar.
+            int leftShift = leftTrackBar.Value;
 
+            // Shift but don't go over 255.
+            int newRed = m_baseColor.R - leftShift;
+            if (newRed < 0) newRed = 0;
+            int newGreen = m_baseColor.G - leftShift;
+            if (newGreen < 0) newGreen = 0;
+            int newBlue = m_baseColor.B - leftShift;
+            if (newBlue < 0) newBlue = 0;
+
+            // Get our shifted color and set background color appropriately.
+            Color newColor = Color.FromArgb(newRed, newBlue, newGreen);
+            m_darkColor = newColor;
+            setTextboxColors(newColor, darkColorTextBox);
+            setTextboxColors(newColor, darkColorTextBox2);
         }
 	}
 }

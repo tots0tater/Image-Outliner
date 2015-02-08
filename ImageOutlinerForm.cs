@@ -15,10 +15,11 @@ namespace Image_Outliner
 	public partial class ImageOutlinerForm : Form
 	{
 		private Outliner m_outliner;
-		private Image m_outfile;
+		private Image m_outfile;		// Used for the exported image
 		private Color darkColor;
 		private Color lightColor;
 		private Color outlineColor;
+		private Color m_baseColor;
 
 		public ImageOutlinerForm()
 		{
@@ -135,7 +136,33 @@ namespace Image_Outliner
 			{
 				outlineColor = dialog.Color;
 				setTextboxColors(outlineColor, outlineColorTextBox);
+				setTextboxColors(outlineColor, outlineColorTextBox2);	// sets the textbox in method 2
 			}
+		}
+
+		/// <summary>
+		/// The base color used for the trackbar color change implementation.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void baseColorButton_Click(object sender, EventArgs e)
+		{
+			ColorDialog dialog = new ColorDialog();
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+				m_baseColor = dialog.Color;
+				setTextboxColors(m_baseColor, baseColorTextBox);
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void outlineTrackBarColorButton_Click(object sender, EventArgs e)
+		{
+			outlineColorButton_Click(sender, e);
 		}
 
 		/// <summary>
@@ -218,5 +245,6 @@ namespace Image_Outliner
 		{
 
 		}
+
 	}
 }

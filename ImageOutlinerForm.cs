@@ -38,6 +38,9 @@ namespace Image_Outliner
             lightDropper.Enabled = false;
             darkDropper.Enabled = false;
             baseDropper.Enabled = false;
+            lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+            darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+            baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 		}
 
 		private void ImageOutlinerForm_Load(object sender, EventArgs e)
@@ -366,7 +369,7 @@ namespace Image_Outliner
                 setTextboxColors(color, darkColorTextBox);
                 setTextboxColors(color, darkColorTextBox2);
 
-				baseDropper.Image = Image_Outliner.Properties.Resources.Dropper__REAL_SMALL_;
+				baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 
                 //baseDropper.Text = "t";
             }
@@ -376,7 +379,7 @@ namespace Image_Outliner
                 setTextboxColors(color, lightColorTextBox);
                 setTextboxColors(color, lightColorTextBox2);
 
-				lightDropper.Image = Image_Outliner.Properties.Resources.Dropper__REAL_SMALL_;
+				lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
                 //lightDropper.Text = "t";
             }
             else if (darkDropper.Enabled == true)
@@ -385,7 +388,7 @@ namespace Image_Outliner
                 setTextboxColors(color, darkColorTextBox);
                 setTextboxColors(color, darkColorTextBox2);
 
-				darkDropper.Image = Image_Outliner.Properties.Resources.Dropper__REAL_SMALL_;
+				darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
             }
 
             m_selectingColor = false;
@@ -408,13 +411,43 @@ namespace Image_Outliner
             fileToolStripMenuItem.Enabled = true;
             editToolStripMenuItem.Enabled = true;
             helpToolStripMenuItem.Enabled = true;
+            leftTrackBar.Enabled = true;
+            rightTrackBar.Enabled = true;
         }
 
 
         private void baseDropper_Click(object sender, EventArgs e)
         {
-            m_selectingColor = true;
+            if (m_selectingColor)
+            {
+                //Re-enable everything, stop selecting color, and reset image.
+                backgroundButton.Enabled = true;
+                backgroundButton2.Enabled = true;
+                outlineColorButton.Enabled = true;
+                outlineColorButton2.Enabled = true;
+                lightColorButton.Enabled = true;
+                darkColorButton.Enabled = true;
+                baseColorButton.Enabled = true;
+                loadImageButton.Enabled = true;
+                outlineButton.Enabled = true;
+                darkDropper.Enabled = true;
+                lightDropper.Enabled = true;
+                transparentCheckBox.Enabled = true;
+                imageLocationTextbox.Enabled = true;
+                fileToolStripMenuItem.Enabled = true;
+                editToolStripMenuItem.Enabled = true;
+                helpToolStripMenuItem.Enabled = true;
+                leftTrackBar.Enabled = true;
+                rightTrackBar.Enabled = true;
 
+                m_selectingColor = false;
+
+                //baseDropper.Text = "t";
+                baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+
+                return;
+            }
+            
             //Disable other buttons, toolbars, and other things.
             backgroundButton.Enabled = false;
             backgroundButton2.Enabled = false;
@@ -432,14 +465,46 @@ namespace Image_Outliner
             fileToolStripMenuItem.Enabled = false;
             editToolStripMenuItem.Enabled = false;
             helpToolStripMenuItem.Enabled = false;
+            leftTrackBar.Enabled = false;
+            rightTrackBar.Enabled = false;
+
+            m_selectingColor = true;
 
             //baseDropper.Text = "x";
-			baseDropper.Image = Image_Outliner.Properties.Resources.X;
+            baseDropper.Image = Image_Outliner.Properties.Resources.Cancel;
         }
 
         private void darkDropper_Click(object sender, EventArgs e)
         {
-            m_selectingColor = true;
+            if (m_selectingColor)
+            {
+                //Re-enable everything, stop selecting color, and reset image.
+                backgroundButton.Enabled = true;
+                backgroundButton2.Enabled = true;
+                outlineColorButton.Enabled = true;
+                outlineColorButton2.Enabled = true;
+                lightColorButton.Enabled = true;
+                darkColorButton.Enabled = true;
+                baseColorButton.Enabled = true;
+                loadImageButton.Enabled = true;
+                outlineButton.Enabled = true;
+                lightDropper.Enabled = true;
+                baseDropper.Enabled = true;
+                transparentCheckBox.Enabled = true;
+                imageLocationTextbox.Enabled = true;
+                fileToolStripMenuItem.Enabled = true;
+                editToolStripMenuItem.Enabled = true;
+                helpToolStripMenuItem.Enabled = true;
+                leftTrackBar.Enabled = true;
+                rightTrackBar.Enabled = true;
+
+                m_selectingColor = false;
+
+                //baseDropper.Text = "t";
+                darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+
+                return;
+            }
 
             //Disable other buttons, toolbars, and other things.
             backgroundButton.Enabled = false;
@@ -458,16 +523,46 @@ namespace Image_Outliner
             fileToolStripMenuItem.Enabled = false;
             editToolStripMenuItem.Enabled = false;
             helpToolStripMenuItem.Enabled = false;
+            leftTrackBar.Enabled = false;
+            rightTrackBar.Enabled = false;
+
+            m_selectingColor = true;
 
             //darkDropper.Text = "x";
-			darkDropper.Image = Image_Outliner.Properties.Resources.X;
-
-			
+            darkDropper.Image = Image_Outliner.Properties.Resources.Cancel;
         }
 
         private void lightDropper_Click(object sender, EventArgs e)
         {
-            m_selectingColor = true;
+            if (m_selectingColor)
+            {
+                //Re-enable everything, stop selecting color, and reset image.
+                backgroundButton.Enabled = true;
+                backgroundButton2.Enabled = true;
+                outlineColorButton.Enabled = true;
+                outlineColorButton2.Enabled = true;
+                lightColorButton.Enabled = true;
+                darkColorButton.Enabled = true;
+                baseColorButton.Enabled = true;
+                loadImageButton.Enabled = true;
+                outlineButton.Enabled = true;
+                darkDropper.Enabled = true;
+                baseDropper.Enabled = true;
+                transparentCheckBox.Enabled = true;
+                imageLocationTextbox.Enabled = true;
+                fileToolStripMenuItem.Enabled = true;
+                editToolStripMenuItem.Enabled = true;
+                helpToolStripMenuItem.Enabled = true;
+                leftTrackBar.Enabled = true;
+                rightTrackBar.Enabled = true;
+
+                m_selectingColor = false;
+
+                //baseDropper.Text = "t";
+                lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+
+                return;
+            }
 
             //Disable other buttons, toolbars, and other things.
             backgroundButton.Enabled = false;
@@ -486,9 +581,13 @@ namespace Image_Outliner
             fileToolStripMenuItem.Enabled = false;
             editToolStripMenuItem.Enabled = false;
             helpToolStripMenuItem.Enabled = false;
+            leftTrackBar.Enabled = false;
+            rightTrackBar.Enabled = false;
+
+            m_selectingColor = true;
 
             //lightDropper.Text = "x";
-			lightDropper.Image = Image_Outliner.Properties.Resources.X;
+			lightDropper.Image = Image_Outliner.Properties.Resources.Cancel;
         }
 	}
 }

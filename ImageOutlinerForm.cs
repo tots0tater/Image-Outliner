@@ -287,37 +287,11 @@ namespace Image_Outliner
             if (newBlue < 0) newBlue = 0;
 
             // Get our shifted color and set background color appropriately.
-            Color newColor = Color.FromArgb(newRed, newGreen, newBlue);
+            Color newColor = Color.FromArgb(newRed, newBlue, newGreen);
             m_darkColor = newColor;
             setTextboxColors(newColor, darkColorTextBox);
             setTextboxColors(newColor, darkColorTextBox2);
         }
-
-		/// <summary>
-		/// When the user clicks on the add color button, they can have multiple color ranges
-		/// ... It's 3:51 in the morning.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void addColorButton_Click(object sender, EventArgs e)
-		{
-			if (pictureBox1.Image == null)
-			{
-				MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
-				return;
-			}
-
-			// Then there isn't overlap
-			if (!m_outliner.IsOverlap(new ColorRange(m_lightColor, m_darkColor)))
-				m_outliner.MapColor(new ColorRange(m_lightColor, m_darkColor), m_outlineColor);
-
-			leftTrackBar.Enabled = false;	leftTrackBar.Value = 0;
-			rightTrackBar.Enabled = false;	rightTrackBar.Value = 0;
-			darkColorTextBox2.Text = ""; darkColorTextBox2.BackColor = SystemColors.Control;
-			lightColorTextBox2.Text = ""; lightColorTextBox2.BackColor = SystemColors.Control;
-			setTextboxColors(Color.Black, outlineColorTextBox);
-			setTextboxColors(Color.Black, outlineColorTextBox2);
-		}
 
 		/// <summary>
 		/// When the user clicks the "Outline Image..." button, the image is shown in the
@@ -344,9 +318,6 @@ namespace Image_Outliner
 			m_outliner.Outline();
 			m_outfile = m_outliner.OutputImage;
 			pictureBox1.Image = m_outfile;
-
-			// We want to start anew. Or something. 4:41AM.
-			m_outliner.Reset();
 
 			saveImageToolStripMenuItem.Enabled = true;
 		}
@@ -496,6 +467,7 @@ namespace Image_Outliner
             leftTrackBar.Enabled = true;
             rightTrackBar.Enabled = true;
         }
+
 
         private void baseDropper_Click(object sender, EventArgs e)
         {

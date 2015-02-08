@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,15 +39,23 @@ namespace Image_Outliner
 				// and allow the image processing to begin
 				Image inputImage = Image.FromFile(openFileDialog.FileName);
 
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+                /*
 				if (inputImage.Width > pictureBox1.Width && inputImage.Height > pictureBox1.Height)
 					pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 				else
 					pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+                */
+
 				pictureBox1.Image = inputImage;
 
 				// This is so we can know the explicit type of image we are dealing with.
 				Bitmap bmpImage = new Bitmap(inputImage); 
 				m_outliner.InputImage = bmpImage;
+
+                // Set the accompanying textbox's text to the file name.
+                imageLocationTextbox.Text = openFileDialog.FileName;
 			}
 		}
 
@@ -57,7 +66,14 @@ namespace Image_Outliner
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void outlineImageToolStripMenuItem_Click(object sender, EventArgs e)
-		{
+        {
+            // Throw an error if there is no image to outline.
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+                return;
+            }
+
 			m_outliner.MapColor(new ColorRange(lowColorTextBox.BackColor, highColorTextBox.BackColor), outlineColorTextBox.BackColor);
 			m_outliner.Outline();
 			Image outputPicture = m_outliner.OutputImage;
@@ -118,12 +134,58 @@ namespace Image_Outliner
 
 		private void ImageOutlinerForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void loadImageButton_Click(object sender, EventArgs e)
         {
             loadImageToolStripMenuItem_Click(sender, e);
+        }
+        private void outlineButton_Click(object sender, EventArgs e)
+        {
+            outlineImageToolStripMenuItem_Click(sender, e);
+        }
+
+        private void imageLocationTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keys.Enter == e.KeyCode)
+            {
+                string filename = imageLocationTextbox.Text;
+
+                // If empty filename, throw and error.
+                if (filename == "")
+                {
+                    MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+                    return;
+                }
+
+                Image inputImage;
+
+                // Once the image is chosen from the file, we put it in the OutlinerEngine 
+                // and allow the image processing to begin.
+                // Thrown an error if the file's not found.
+                try
+                {
+                    inputImage = Image.FromFile(filename);
+                }
+                catch (FileNotFoundException)
+                {
+                    // This creates an error dialog box.
+                    MessageBox.Show("File not found, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+                    return;
+                }
+                catch (OutOfMemoryException)
+                {
+                    // This creates an error dialog box.
+                    MessageBox.Show("Not a valid image file, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+                    return;
+                }
+
+                pictureBox1.Image = inputImage;
+
+                // This is so we can know the explicit type of image we are dealing with.
+                Bitmap bmpImage = new Bitmap(inputImage);
+                m_outliner.InputImage = bmpImage;
+            }
         }
 	}
 }

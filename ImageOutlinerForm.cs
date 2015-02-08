@@ -19,7 +19,6 @@ namespace Image_Outliner
 		{
 			InitializeComponent();
 			m_outliner = new Outliner();
-			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
 		}
 
 		/// <summary>
@@ -38,14 +37,16 @@ namespace Image_Outliner
 				// Once the image is chosen from the file, we put it in the OutlinerEngine 
 				// and allow the image processing to begin
 				Image inputImage = Image.FromFile(openFileDialog.FileName);
+
+				if (inputImage.Width > pictureBox1.Width && inputImage.Height > pictureBox1.Height)
+					pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+				else
+					pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
 				pictureBox1.Image = inputImage;
-				
+
 				// This is so we can know the explicit type of image we are dealing with.
 				Bitmap bmpImage = new Bitmap(inputImage); 
-
 				m_outliner.InputImage = bmpImage;
-
-
 			}
 		}
 
@@ -63,15 +64,14 @@ namespace Image_Outliner
 			pictureBox1.Image = outputPicture;
 		}
 
-		#region Low/High/Outline Color
-
+		#region Light/Dark/Outline Color
 		/// <summary>
 		/// Sets and displays the color the user picks for the low range. The low
 		/// range is for detecting colors that will be accepted for the outline.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void lowColorButton_Click(object sender, EventArgs e)
+		private void lightColorButton_Click(object sender, EventArgs e)
 		{
 			ColorDialog dialog = new ColorDialog();
 
@@ -88,7 +88,7 @@ namespace Image_Outliner
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void highColorButton_Click(object sender, EventArgs e)
+		private void darkColorButton_Click(object sender, EventArgs e)
 		{
 			ColorDialog dialog = new ColorDialog();
 
@@ -114,7 +114,6 @@ namespace Image_Outliner
 				outlineColorTextBox.BackColor = backgroundColor;
 			}
 		}
-
 		#endregion
 
 		private void ImageOutlinerForm_Load(object sender, EventArgs e)

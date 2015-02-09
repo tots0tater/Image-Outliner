@@ -21,7 +21,7 @@ namespace Image_Outliner
 		private Color m_outlineColor = Color.Black;
 		private Color m_baseColor;
 		private Color m_backgroundColor = Color.White;
-        private bool m_selectingColor = false;
+		private bool m_selectingColor = false;
 
 		public ImageOutlinerForm()
 		{
@@ -33,18 +33,18 @@ namespace Image_Outliner
 			setTextboxColors(m_backgroundColor, backgroundTextBox);
 			setTextboxColors(m_backgroundColor, backgroundTextBox2);
 
-            //Start with droppers disabled.
-            lightDropper.Enabled = false;
-            darkDropper.Enabled = false;
-            baseDropper.Enabled = false;
-            lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
-            darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
-            baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+			//Start with droppers disabled.
+			lightDropper.Enabled = false;
+			darkDropper.Enabled = false;
+			baseDropper.Enabled = false;
+			lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+			darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+			baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 		}
 
 		private void ImageOutlinerForm_Load(object sender, EventArgs e)
-        {
-        }
+		{
+		}
 
 		/// <summary>
 		/// From an open file dialog, the user chooses an image. The image is then displayed
@@ -54,7 +54,7 @@ namespace Image_Outliner
 		/// <param name="e"></param>
 		private void loadImageToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+			OpenFileDialog openFileDialog = new OpenFileDialog();
 			openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
 
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -63,28 +63,28 @@ namespace Image_Outliner
 				// and allow the image processing to begin
 				Image inputImage = Image.FromFile(openFileDialog.FileName);
 
-                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+				pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
-                /*
+				/*
 				if (inputImage.Width > pictureBox1.Width && inputImage.Height > pictureBox1.Height)
 					pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 				else
 					pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-                */
+				*/
 
 				pictureBox1.Image = inputImage;
 
 				// This is so we can know the explicit type of image we are dealing with.
-				Bitmap bmpImage = new Bitmap(inputImage); 
+				Bitmap bmpImage = new Bitmap(inputImage);
 				m_outliner.InputImage = bmpImage;
 
-                // Set the accompanying textbox's text to the file name.
-                imageLocationTextbox.Text = openFileDialog.FileName;
+				// Set the accompanying textbox's text to the file name.
+				imageLocationTextbox.Text = openFileDialog.FileName;
 
-                //Droppers can now be used.
-                lightDropper.Enabled = true;
-                darkDropper.Enabled = true;
-                baseDropper.Enabled = true;
+				//Droppers can now be used.
+				lightDropper.Enabled = true;
+				darkDropper.Enabled = true;
+				baseDropper.Enabled = true;
 			}
 		}
 
@@ -101,9 +101,9 @@ namespace Image_Outliner
 			ColorDialog dialog = new ColorDialog();
 			if (dialog.ShowDialog() == DialogResult.OK)
 			{
-                m_lightColor = dialog.Color;
-                setTextboxColors(m_lightColor, lightColorTextBox);
-                setTextboxColors(m_lightColor, lightColorTextBox2);
+				m_lightColor = dialog.Color;
+				setTextboxColors(m_lightColor, lightColorTextBox);
+				setTextboxColors(m_lightColor, lightColorTextBox2);
 			}
 		}
 
@@ -118,9 +118,9 @@ namespace Image_Outliner
 			ColorDialog dialog = new ColorDialog();
 			if (dialog.ShowDialog() == DialogResult.OK)
 			{
-                m_darkColor = dialog.Color;
-                setTextboxColors(m_darkColor, darkColorTextBox);
-                setTextboxColors(m_darkColor, darkColorTextBox2);
+				m_darkColor = dialog.Color;
+				setTextboxColors(m_darkColor, darkColorTextBox);
+				setTextboxColors(m_darkColor, darkColorTextBox2);
 			}
 		}
 
@@ -134,11 +134,11 @@ namespace Image_Outliner
 				setTextboxColors(m_outlineColor, outlineColorTextBox2);	// sets the textbox in method 2
 			}
 		}
-        
-        private void outlineColorButton2_Click(object sender, EventArgs e)
-        {
-            outlineColorButton_Click(sender, e);
-        }
+
+		private void outlineColorButton2_Click(object sender, EventArgs e)
+		{
+			outlineColorButton_Click(sender, e);
+		}
 
 		private void backgroundButton_Click(object sender, EventArgs e)
 		{
@@ -167,13 +167,13 @@ namespace Image_Outliner
 			if (dialog.ShowDialog() == DialogResult.OK)
 			{
 				m_baseColor = dialog.Color;
-                setTextboxColors(m_baseColor, baseColorTextBox);
-                setTextboxColors(m_baseColor, lightColorTextBox);
-                setTextboxColors(m_baseColor, lightColorTextBox2);
-                setTextboxColors(m_baseColor, darkColorTextBox);
-                setTextboxColors(m_baseColor, darkColorTextBox2);
-                leftTrackBar.Enabled = true;
-                rightTrackBar.Enabled = true;
+				setTextboxColors(m_baseColor, baseColorTextBox);
+				setTextboxColors(m_baseColor, lightColorTextBox);
+				setTextboxColors(m_baseColor, lightColorTextBox2);
+				setTextboxColors(m_baseColor, darkColorTextBox);
+				setTextboxColors(m_baseColor, darkColorTextBox2);
+				leftTrackBar.Enabled = true;
+				rightTrackBar.Enabled = true;
 			}
 		}
 
@@ -195,57 +195,57 @@ namespace Image_Outliner
 		}
 		#endregion
 
-        private void loadImageButton_Click(object sender, EventArgs e)
-        {
-            loadImageToolStripMenuItem_Click(sender, e);
-        }
-        private void outlineButton_Click(object sender, EventArgs e)
-        {
-            outlineImageToolStripMenuItem_Click(sender, e);
-        }
+		private void loadImageButton_Click(object sender, EventArgs e)
+		{
+			loadImageToolStripMenuItem_Click(sender, e);
+		}
+		private void outlineButton_Click(object sender, EventArgs e)
+		{
+			outlineImageToolStripMenuItem_Click(sender, e);
+		}
 
-        private void imageLocationTextbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Keys.Enter == e.KeyCode)
-            {
-                string filename = imageLocationTextbox.Text;
+		private void imageLocationTextbox_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (Keys.Enter == e.KeyCode)
+			{
+				string filename = imageLocationTextbox.Text;
 
-                // If empty filename, throw and error.
-                if (filename == "")
-                {
-                    MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
-                    return;
-                }
+				// If empty filename, throw and error.
+				if (filename == "")
+				{
+					MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+					return;
+				}
 
-                Image inputImage;
+				Image inputImage;
 
-                // Once the image is chosen from the file, we put it in the OutlinerEngine 
-                // and allow the image processing to begin.
-                // Thrown an error if the file's not found.
-                try
-                {
-                    inputImage = Image.FromFile(filename);
-                }
-                catch (FileNotFoundException)
-                {
-                    // This creates an error dialog box.
-                    MessageBox.Show("File not found, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
-                    return;
-                }
-                catch (OutOfMemoryException)
-                {
-                    // This creates an error dialog box.
-                    MessageBox.Show("Not a valid image file, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
-                    return;
-                }
+				// Once the image is chosen from the file, we put it in the OutlinerEngine 
+				// and allow the image processing to begin.
+				// Thrown an error if the file's not found.
+				try
+				{
+					inputImage = Image.FromFile(filename);
+				}
+				catch (FileNotFoundException)
+				{
+					// This creates an error dialog box.
+					MessageBox.Show("File not found, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+					return;
+				}
+				catch (OutOfMemoryException)
+				{
+					// This creates an error dialog box.
+					MessageBox.Show("Not a valid image file, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+					return;
+				}
 
-                pictureBox1.Image = inputImage;
+				pictureBox1.Image = inputImage;
 
-                // This is so we can know the explicit type of image we are dealing with.
-                Bitmap bmpImage = new Bitmap(inputImage);
-                m_outliner.InputImage = bmpImage;
-            }
-        }
+				// This is so we can know the explicit type of image we are dealing with.
+				Bitmap bmpImage = new Bitmap(inputImage);
+				m_outliner.InputImage = bmpImage;
+			}
+		}
 
 		private void helpToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -253,45 +253,71 @@ namespace Image_Outliner
 			// certain... things do.
 		}
 
-        private void rightTrackBar_Scroll_1(object sender, EventArgs e)
-        {
-            // Get shift fromn trackbar.
-            int rightShift = rightTrackBar.Value;
+		private void rightTrackBar_Scroll_1(object sender, EventArgs e)
+		{
+			// Get shift fromn trackbar.
+			int rightShift = rightTrackBar.Value;
 
-            // Shift but don't go over 255.
-            int newRed = m_baseColor.R + rightShift;
-            if (newRed > 255) newRed = 255;
-            int newGreen = m_baseColor.G + rightShift;
-            if (newGreen > 255) newGreen = 255;
-            int newBlue = m_baseColor.B + rightShift;
-            if (newBlue > 255) newBlue = 255;
+			// Shift but don't go over 255.
+			int newRed = m_baseColor.R + rightShift;
+			if (newRed > 255) newRed = 255;
+			int newGreen = m_baseColor.G + rightShift;
+			if (newGreen > 255) newGreen = 255;
+			int newBlue = m_baseColor.B + rightShift;
+			if (newBlue > 255) newBlue = 255;
 
-            // Get our shifted color and set background color appropriately.
-            Color newColor = Color.FromArgb(newRed, newGreen, newBlue);
-            m_lightColor = newColor;
-            setTextboxColors(newColor, lightColorTextBox);
-            setTextboxColors(newColor, lightColorTextBox2);
-        }
+			// Get our shifted color and set background color appropriately.
+			Color newColor = Color.FromArgb(newRed, newGreen, newBlue);
+			m_lightColor = newColor;
+			setTextboxColors(newColor, lightColorTextBox);
+			setTextboxColors(newColor, lightColorTextBox2);
+		}
 
-        private void leftTrackBar_Scroll_1(object sender, EventArgs e)
-        {
-            // Get shift fromn trackbar.
-            int leftShift = leftTrackBar.Value;
+		private void leftTrackBar_Scroll_1(object sender, EventArgs e)
+		{
+			// Get shift fromn trackbar.
+			int leftShift = leftTrackBar.Value;
 
-            // Shift but don't go over 255.
-            int newRed = m_baseColor.R - leftShift;
-            if (newRed < 0) newRed = 0;
-            int newGreen = m_baseColor.G - leftShift;
-            if (newGreen < 0) newGreen = 0;
-            int newBlue = m_baseColor.B - leftShift;
-            if (newBlue < 0) newBlue = 0;
+			// Shift but don't go over 255.
+			int newRed = m_baseColor.R - leftShift;
+			if (newRed < 0) newRed = 0;
+			int newGreen = m_baseColor.G - leftShift;
+			if (newGreen < 0) newGreen = 0;
+			int newBlue = m_baseColor.B - leftShift;
+			if (newBlue < 0) newBlue = 0;
 
-            // Get our shifted color and set background color appropriately.
-            Color newColor = Color.FromArgb(newRed, newBlue, newGreen);
-            m_darkColor = newColor;
-            setTextboxColors(newColor, darkColorTextBox);
-            setTextboxColors(newColor, darkColorTextBox2);
-        }
+			// Get our shifted color and set background color appropriately.
+			Color newColor = Color.FromArgb(newRed, newGreen, newBlue);
+			m_darkColor = newColor;
+			setTextboxColors(newColor, darkColorTextBox);
+			setTextboxColors(newColor, darkColorTextBox2);
+		}
+
+		/// <summary>
+		/// When the user clicks on the add color button, they can have multiple color ranges
+		/// ... It's 3:51 in the morning.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void addColorButton_Click(object sender, EventArgs e)
+		{
+			if (pictureBox1.Image == null)
+			{
+				MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+				return;
+			}
+
+			// Then there isn't overlap
+			if (!m_outliner.IsOverlap(new ColorRange(m_lightColor, m_darkColor)))
+				m_outliner.MapColor(new ColorRange(m_lightColor, m_darkColor), m_outlineColor);
+
+			leftTrackBar.Enabled = false; leftTrackBar.Value = 0;
+			rightTrackBar.Enabled = false; rightTrackBar.Value = 0;
+			darkColorTextBox2.Text = ""; darkColorTextBox2.BackColor = SystemColors.Control;
+			lightColorTextBox2.Text = ""; lightColorTextBox2.BackColor = SystemColors.Control;
+			setTextboxColors(Color.Black, outlineColorTextBox);
+			setTextboxColors(Color.Black, outlineColorTextBox2);
+		}
 
 		/// <summary>
 		/// When the user clicks the "Outline Image..." button, the image is shown in the
@@ -300,13 +326,13 @@ namespace Image_Outliner
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void outlineImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Throw an error if there is no image to outline.
-            if (pictureBox1.Image == null)
-            {
-                MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
-                return;
-            }
+		{
+			// Throw an error if there is no image to outline.
+			if (pictureBox1.Image == null)
+			{
+				MessageBox.Show("No file chosen, please try again.", "Image Outliner - Error", MessageBoxButtons.OK);
+				return;
+			}
 
 			m_outliner.MapColor(new ColorRange(m_lightColor, m_darkColor), outlineColorTextBox.BackColor);
 
@@ -318,6 +344,9 @@ namespace Image_Outliner
 			m_outliner.Outline();
 			m_outfile = m_outliner.OutputImage;
 			pictureBox1.Image = m_outfile;
+
+			// We want to start anew. Or something. 4:41AM.
+			m_outliner.Reset();
 
 			saveImageToolStripMenuItem.Enabled = true;
 		}
@@ -350,291 +379,290 @@ namespace Image_Outliner
 			}
 		}
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (!m_selectingColor) return;
-            
-            Color color;
-            
-            // Solution reused from http://bytes.com/topic/net/answers/645830-getting-x-y-coordinates-picturebox-image.
-            int imgWidth = pictureBox1.Image.Width;
-            int imgHeight = pictureBox1.Image.Height;
-            int boxWidth = pictureBox1.Size.Width;
-            int boxHeight = pictureBox1.Size.Height;
+		private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (!m_selectingColor) return;
 
-            //This variable will hold the result
-            double X = e.X;
-            double Y = e.Y;
+			Color color;
 
-            //Comparing the aspect ratio of both the control and the image itself.
-            if (imgWidth / imgHeight > boxWidth / boxHeight)
-            {
-                //If true, that means that the image is stretched through the width of the control.
-                //'In other words: the image is limited by the width.
+			// Solution reused from http://bytes.com/topic/net/answers/645830-getting-x-y-coordinates-picturebox-image.
+			int imgWidth = pictureBox1.Image.Width;
+			int imgHeight = pictureBox1.Image.Height;
+			int boxWidth = pictureBox1.Size.Width;
+			int boxHeight = pictureBox1.Size.Height;
 
-                //The scale of the image in the Picture Box.
-                double scale = (double)boxWidth / imgWidth;
+			//This variable will hold the result
+			double X = e.X;
+			double Y = e.Y;
 
-                //Since the image is in the middle, this code is used to determinate the empty space in the height
-                //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
-                double blankPart = (boxHeight - scale * imgHeight) / 2;
+			//Comparing the aspect ratio of both the control and the image itself.
+			if (imgWidth / imgHeight > boxWidth / boxHeight)
+			{
+				//If true, that means that the image is stretched through the width of the control.
+				//'In other words: the image is limited by the width.
 
-                Y -= blankPart;
+				//The scale of the image in the Picture Box.
+				double scale = (double)boxWidth / imgWidth;
 
-                //Scaling the results.
-                X /= scale;
-                Y /= scale;
-            }
-            else
-            {
-                //If true, that means that the image is stretched through the height of the control.
-                //'In other words: the image is limited by the height.
+				//Since the image is in the middle, this code is used to determinate the empty space in the height
+				//'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
+				double blankPart = (boxHeight - scale * imgHeight) / 2;
 
-                //The scale of the image in the Picture Box.
-                double scale = (double)boxHeight / imgHeight;
+				Y -= blankPart;
 
-                //Since the image is in the middle, this code is used to determinate the empty space in the width
-                //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
-                double blankPart = (boxWidth - scale * imgWidth) / 2;
-                X -= blankPart;
+				//Scaling the results.
+				X /= scale;
+				Y /= scale;
+			}
+			else
+			{
+				//If true, that means that the image is stretched through the height of the control.
+				//'In other words: the image is limited by the height.
 
-                //Scaling the results.
-                X /= scale;
-                Y /= scale;
-            }
-            
-            Bitmap bmpImage = pictureBox1.Image as Bitmap;
-            try
-            {
-                color = bmpImage.GetPixel(Convert.ToInt32(X), Convert.ToInt32(Y));
-            }
-            catch(Exception)
-            {
-                // We can't do anything, it's out of range. Just return.
-                return;
-            }
+				//The scale of the image in the Picture Box.
+				double scale = (double)boxHeight / imgHeight;
 
-            if (baseDropper.Enabled == true)
-            {
-                m_baseColor = color;
-                m_lightColor = color;
-                m_darkColor = color;
-                setTextboxColors(color, baseColorTextBox);
-                setTextboxColors(color, lightColorTextBox);
-                setTextboxColors(color, lightColorTextBox2);
-                setTextboxColors(color, darkColorTextBox);
-                setTextboxColors(color, darkColorTextBox2);
+				//Since the image is in the middle, this code is used to determinate the empty space in the width
+				//'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
+				double blankPart = (boxWidth - scale * imgWidth) / 2;
+				X -= blankPart;
+
+				//Scaling the results.
+				X /= scale;
+				Y /= scale;
+			}
+
+			Bitmap bmpImage = pictureBox1.Image as Bitmap;
+			try
+			{
+				color = bmpImage.GetPixel(Convert.ToInt32(X), Convert.ToInt32(Y));
+			}
+			catch (Exception)
+			{
+				// We can't do anything, it's out of range. Just return.
+				return;
+			}
+
+			if (baseDropper.Enabled == true)
+			{
+				m_baseColor = color;
+				m_lightColor = color;
+				m_darkColor = color;
+				setTextboxColors(color, baseColorTextBox);
+				setTextboxColors(color, lightColorTextBox);
+				setTextboxColors(color, lightColorTextBox2);
+				setTextboxColors(color, darkColorTextBox);
+				setTextboxColors(color, darkColorTextBox2);
 
 				baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
-            }
-            else if (lightDropper.Enabled == true)
-            {
-                m_lightColor = color;
-                setTextboxColors(color, lightColorTextBox);
-                setTextboxColors(color, lightColorTextBox2);
+			}
+			else if (lightDropper.Enabled == true)
+			{
+				m_lightColor = color;
+				setTextboxColors(color, lightColorTextBox);
+				setTextboxColors(color, lightColorTextBox2);
 
 				lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
-            }
-            else if (darkDropper.Enabled == true)
-            {
-                m_darkColor = color;
-                setTextboxColors(color, darkColorTextBox);
-                setTextboxColors(color, darkColorTextBox2);
+			}
+			else if (darkDropper.Enabled == true)
+			{
+				m_darkColor = color;
+				setTextboxColors(color, darkColorTextBox);
+				setTextboxColors(color, darkColorTextBox2);
 
 				darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
-            }
+			}
 
-            m_selectingColor = false;
+			m_selectingColor = false;
 
-            //Re-enable other buttons, toolbars, and other things.
-            backgroundButton.Enabled = true;
-            backgroundButton2.Enabled = true;
-            outlineColorButton.Enabled = true;
-            outlineColorButton2.Enabled = true;
-            lightColorButton.Enabled = true;
-            darkColorButton.Enabled = true;
-            baseColorButton.Enabled = true;
-            loadImageButton.Enabled = true;
-            outlineButton.Enabled = true;
-            lightDropper.Enabled = true;
-            darkDropper.Enabled = true;
-            baseDropper.Enabled = true;
-            transparentCheckBox.Enabled = true;
-            imageLocationTextbox.Enabled = true;
-            fileToolStripMenuItem.Enabled = true;
-            editToolStripMenuItem.Enabled = true;
-            helpToolStripMenuItem.Enabled = true;
-            leftTrackBar.Enabled = true;
-            rightTrackBar.Enabled = true;
-        }
+			//Re-enable other buttons, toolbars, and other things.
+			backgroundButton.Enabled = true;
+			backgroundButton2.Enabled = true;
+			outlineColorButton.Enabled = true;
+			outlineColorButton2.Enabled = true;
+			lightColorButton.Enabled = true;
+			darkColorButton.Enabled = true;
+			baseColorButton.Enabled = true;
+			loadImageButton.Enabled = true;
+			outlineButton.Enabled = true;
+			lightDropper.Enabled = true;
+			darkDropper.Enabled = true;
+			baseDropper.Enabled = true;
+			transparentCheckBox.Enabled = true;
+			imageLocationTextbox.Enabled = true;
+			fileToolStripMenuItem.Enabled = true;
+			editToolStripMenuItem.Enabled = true;
+			helpToolStripMenuItem.Enabled = true;
+			leftTrackBar.Enabled = true;
+			rightTrackBar.Enabled = true;
+		}
 
+		private void baseDropper_Click(object sender, EventArgs e)
+		{
+			if (m_selectingColor)
+			{
+				//Re-enable everything, stop selecting color, and reset image.
+				backgroundButton.Enabled = true;
+				backgroundButton2.Enabled = true;
+				outlineColorButton.Enabled = true;
+				outlineColorButton2.Enabled = true;
+				lightColorButton.Enabled = true;
+				darkColorButton.Enabled = true;
+				baseColorButton.Enabled = true;
+				loadImageButton.Enabled = true;
+				outlineButton.Enabled = true;
+				darkDropper.Enabled = true;
+				lightDropper.Enabled = true;
+				transparentCheckBox.Enabled = true;
+				imageLocationTextbox.Enabled = true;
+				fileToolStripMenuItem.Enabled = true;
+				editToolStripMenuItem.Enabled = true;
+				helpToolStripMenuItem.Enabled = true;
+				leftTrackBar.Enabled = true;
+				rightTrackBar.Enabled = true;
 
-        private void baseDropper_Click(object sender, EventArgs e)
-        {
-            if (m_selectingColor)
-            {
-                //Re-enable everything, stop selecting color, and reset image.
-                backgroundButton.Enabled = true;
-                backgroundButton2.Enabled = true;
-                outlineColorButton.Enabled = true;
-                outlineColorButton2.Enabled = true;
-                lightColorButton.Enabled = true;
-                darkColorButton.Enabled = true;
-                baseColorButton.Enabled = true;
-                loadImageButton.Enabled = true;
-                outlineButton.Enabled = true;
-                darkDropper.Enabled = true;
-                lightDropper.Enabled = true;
-                transparentCheckBox.Enabled = true;
-                imageLocationTextbox.Enabled = true;
-                fileToolStripMenuItem.Enabled = true;
-                editToolStripMenuItem.Enabled = true;
-                helpToolStripMenuItem.Enabled = true;
-                leftTrackBar.Enabled = true;
-                rightTrackBar.Enabled = true;
+				m_selectingColor = false;
 
-                m_selectingColor = false;
+				baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 
-                baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+				return;
+			}
 
-                return;
-            }
-            
-            //Disable other buttons, toolbars, and other things.
-            backgroundButton.Enabled = false;
-            backgroundButton2.Enabled = false;
-            outlineColorButton.Enabled = false;
-            outlineColorButton2.Enabled = false;
-            lightColorButton.Enabled = false;
-            darkColorButton.Enabled = false;
-            baseColorButton.Enabled = false;
-            loadImageButton.Enabled = false;
-            outlineButton.Enabled = false;
-            darkDropper.Enabled = false;
-            lightDropper.Enabled = false;
-            transparentCheckBox.Enabled = false;
-            imageLocationTextbox.Enabled = false;
-            fileToolStripMenuItem.Enabled = false;
-            editToolStripMenuItem.Enabled = false;
-            helpToolStripMenuItem.Enabled = false;
-            leftTrackBar.Enabled = false;
-            rightTrackBar.Enabled = false;
+			//Disable other buttons, toolbars, and other things.
+			backgroundButton.Enabled = false;
+			backgroundButton2.Enabled = false;
+			outlineColorButton.Enabled = false;
+			outlineColorButton2.Enabled = false;
+			lightColorButton.Enabled = false;
+			darkColorButton.Enabled = false;
+			baseColorButton.Enabled = false;
+			loadImageButton.Enabled = false;
+			outlineButton.Enabled = false;
+			darkDropper.Enabled = false;
+			lightDropper.Enabled = false;
+			transparentCheckBox.Enabled = false;
+			imageLocationTextbox.Enabled = false;
+			fileToolStripMenuItem.Enabled = false;
+			editToolStripMenuItem.Enabled = false;
+			helpToolStripMenuItem.Enabled = false;
+			leftTrackBar.Enabled = false;
+			rightTrackBar.Enabled = false;
 
-            m_selectingColor = true;
+			m_selectingColor = true;
 
-            baseDropper.Image = Image_Outliner.Properties.Resources.Cancel;
-        }
+			baseDropper.Image = Image_Outliner.Properties.Resources.Cancel;
+		}
 
-        private void darkDropper_Click(object sender, EventArgs e)
-        {
-            if (m_selectingColor)
-            {
-                //Re-enable everything, stop selecting color, and reset image.
-                backgroundButton.Enabled = true;
-                backgroundButton2.Enabled = true;
-                outlineColorButton.Enabled = true;
-                outlineColorButton2.Enabled = true;
-                lightColorButton.Enabled = true;
-                darkColorButton.Enabled = true;
-                baseColorButton.Enabled = true;
-                loadImageButton.Enabled = true;
-                outlineButton.Enabled = true;
-                lightDropper.Enabled = true;
-                baseDropper.Enabled = true;
-                transparentCheckBox.Enabled = true;
-                imageLocationTextbox.Enabled = true;
-                fileToolStripMenuItem.Enabled = true;
-                editToolStripMenuItem.Enabled = true;
-                helpToolStripMenuItem.Enabled = true;
-                leftTrackBar.Enabled = true;
-                rightTrackBar.Enabled = true;
+		private void darkDropper_Click(object sender, EventArgs e)
+		{
+			if (m_selectingColor)
+			{
+				//Re-enable everything, stop selecting color, and reset image.
+				backgroundButton.Enabled = true;
+				backgroundButton2.Enabled = true;
+				outlineColorButton.Enabled = true;
+				outlineColorButton2.Enabled = true;
+				lightColorButton.Enabled = true;
+				darkColorButton.Enabled = true;
+				baseColorButton.Enabled = true;
+				loadImageButton.Enabled = true;
+				outlineButton.Enabled = true;
+				lightDropper.Enabled = true;
+				baseDropper.Enabled = true;
+				transparentCheckBox.Enabled = true;
+				imageLocationTextbox.Enabled = true;
+				fileToolStripMenuItem.Enabled = true;
+				editToolStripMenuItem.Enabled = true;
+				helpToolStripMenuItem.Enabled = true;
+				leftTrackBar.Enabled = true;
+				rightTrackBar.Enabled = true;
 
-                m_selectingColor = false;
+				m_selectingColor = false;
 
-                darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+				darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 
-                return;
-            }
+				return;
+			}
 
-            //Disable other buttons, toolbars, and other things.
-            backgroundButton.Enabled = false;
-            backgroundButton2.Enabled = false;
-            outlineColorButton.Enabled = false;
-            outlineColorButton2.Enabled = false;
-            lightColorButton.Enabled = false;
-            darkColorButton.Enabled = false;
-            baseColorButton.Enabled = false;
-            loadImageButton.Enabled = false;
-            outlineButton.Enabled = false;
-            lightDropper.Enabled = false;
-            baseDropper.Enabled = false;
-            transparentCheckBox.Enabled = false;
-            imageLocationTextbox.Enabled = false;
-            fileToolStripMenuItem.Enabled = false;
-            editToolStripMenuItem.Enabled = false;
-            helpToolStripMenuItem.Enabled = false;
-            leftTrackBar.Enabled = false;
-            rightTrackBar.Enabled = false;
+			//Disable other buttons, toolbars, and other things.
+			backgroundButton.Enabled = false;
+			backgroundButton2.Enabled = false;
+			outlineColorButton.Enabled = false;
+			outlineColorButton2.Enabled = false;
+			lightColorButton.Enabled = false;
+			darkColorButton.Enabled = false;
+			baseColorButton.Enabled = false;
+			loadImageButton.Enabled = false;
+			outlineButton.Enabled = false;
+			lightDropper.Enabled = false;
+			baseDropper.Enabled = false;
+			transparentCheckBox.Enabled = false;
+			imageLocationTextbox.Enabled = false;
+			fileToolStripMenuItem.Enabled = false;
+			editToolStripMenuItem.Enabled = false;
+			helpToolStripMenuItem.Enabled = false;
+			leftTrackBar.Enabled = false;
+			rightTrackBar.Enabled = false;
 
-            m_selectingColor = true;
+			m_selectingColor = true;
 
-            darkDropper.Image = Image_Outliner.Properties.Resources.Cancel;
-        }
+			darkDropper.Image = Image_Outliner.Properties.Resources.Cancel;
+		}
 
-        private void lightDropper_Click(object sender, EventArgs e)
-        {
-            if (m_selectingColor)
-            {
-                //Re-enable everything, stop selecting color, and reset image.
-                backgroundButton.Enabled = true;
-                backgroundButton2.Enabled = true;
-                outlineColorButton.Enabled = true;
-                outlineColorButton2.Enabled = true;
-                lightColorButton.Enabled = true;
-                darkColorButton.Enabled = true;
-                baseColorButton.Enabled = true;
-                loadImageButton.Enabled = true;
-                outlineButton.Enabled = true;
-                darkDropper.Enabled = true;
-                baseDropper.Enabled = true;
-                transparentCheckBox.Enabled = true;
-                imageLocationTextbox.Enabled = true;
-                fileToolStripMenuItem.Enabled = true;
-                editToolStripMenuItem.Enabled = true;
-                helpToolStripMenuItem.Enabled = true;
-                leftTrackBar.Enabled = true;
-                rightTrackBar.Enabled = true;
+		private void lightDropper_Click(object sender, EventArgs e)
+		{
+			if (m_selectingColor)
+			{
+				//Re-enable everything, stop selecting color, and reset image.
+				backgroundButton.Enabled = true;
+				backgroundButton2.Enabled = true;
+				outlineColorButton.Enabled = true;
+				outlineColorButton2.Enabled = true;
+				lightColorButton.Enabled = true;
+				darkColorButton.Enabled = true;
+				baseColorButton.Enabled = true;
+				loadImageButton.Enabled = true;
+				outlineButton.Enabled = true;
+				darkDropper.Enabled = true;
+				baseDropper.Enabled = true;
+				transparentCheckBox.Enabled = true;
+				imageLocationTextbox.Enabled = true;
+				fileToolStripMenuItem.Enabled = true;
+				editToolStripMenuItem.Enabled = true;
+				helpToolStripMenuItem.Enabled = true;
+				leftTrackBar.Enabled = true;
+				rightTrackBar.Enabled = true;
 
-                m_selectingColor = false;
+				m_selectingColor = false;
 
-                lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
+				lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 
-                return;
-            }
+				return;
+			}
 
-            //Disable other buttons, toolbars, and other things.
-            backgroundButton.Enabled = false;
-            backgroundButton2.Enabled = false;
-            outlineColorButton.Enabled = false;
-            outlineColorButton2.Enabled = false;
-            lightColorButton.Enabled = false;
-            darkColorButton.Enabled = false;
-            baseColorButton.Enabled = false;
-            loadImageButton.Enabled = false;
-            outlineButton.Enabled = false;
-            darkDropper.Enabled = false;
-            baseDropper.Enabled = false;
-            transparentCheckBox.Enabled = false;
-            imageLocationTextbox.Enabled = false;
-            fileToolStripMenuItem.Enabled = false;
-            editToolStripMenuItem.Enabled = false;
-            helpToolStripMenuItem.Enabled = false;
-            leftTrackBar.Enabled = false;
-            rightTrackBar.Enabled = false;
+			//Disable other buttons, toolbars, and other things.
+			backgroundButton.Enabled = false;
+			backgroundButton2.Enabled = false;
+			outlineColorButton.Enabled = false;
+			outlineColorButton2.Enabled = false;
+			lightColorButton.Enabled = false;
+			darkColorButton.Enabled = false;
+			baseColorButton.Enabled = false;
+			loadImageButton.Enabled = false;
+			outlineButton.Enabled = false;
+			darkDropper.Enabled = false;
+			baseDropper.Enabled = false;
+			transparentCheckBox.Enabled = false;
+			imageLocationTextbox.Enabled = false;
+			fileToolStripMenuItem.Enabled = false;
+			editToolStripMenuItem.Enabled = false;
+			helpToolStripMenuItem.Enabled = false;
+			leftTrackBar.Enabled = false;
+			rightTrackBar.Enabled = false;
 
-            m_selectingColor = true;
+			m_selectingColor = true;
 
 			lightDropper.Image = Image_Outliner.Properties.Resources.Cancel;
-        }
+		}
 	}
 }

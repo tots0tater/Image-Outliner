@@ -347,8 +347,12 @@ namespace Image_Outliner
 			}
 
 			// Then there isn't overlap
-			if (!m_outliner.IsOverlap(new ColorRange(m_lightColor, m_darkColor)))
-				m_outliner.MapColor(new ColorRange(m_lightColor, m_darkColor), m_outlineColor);
+			bool success = m_outliner.MapColor(new ColorRange(m_lightColor, m_darkColor), m_outlineColor);
+
+			if (!success)
+				MessageBox.Show("Warning: The two outlines you entered have overlap. Change the light and dark colors and add to outline again.", 
+					"Image Outliner - Overlap", 
+					MessageBoxButtons.OK);
 
 			leftTrackBar.Enabled  = false; leftTrackBar.Value = 0;
 			rightTrackBar.Enabled = false; rightTrackBar.Value = 0;

@@ -160,9 +160,15 @@ namespace OutlinerEngine
 		/// </summary>
 		/// <param name="inRange">The "from" color - the color in the original picture to be replaced.</param>
 		/// <param name="outColor">The "to" color - the color in the new picture to replace the old color.</param>
-		public void MapColor(ColorRange inRange, Color outColor)
+		public bool MapColor(ColorRange inRange, Color outColor)
 		{
-			m_colorMap.Add(new KeyValuePair<ColorRange, Color>(inRange, outColor));
+			if (!IsOverlap(inRange))
+			{
+				m_colorMap.Add(new KeyValuePair<ColorRange, Color>(inRange, outColor));
+				return true;
+			}
+
+			return false;
 		}
 
 		public bool IsOverlap(ColorRange range)

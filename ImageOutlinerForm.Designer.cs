@@ -42,6 +42,7 @@
 			this.imageLocationLabel = new System.Windows.Forms.Label();
 			this.outlineButton = new System.Windows.Forms.Button();
 			this.imageControlGroup = new System.Windows.Forms.GroupBox();
+			this.addOutlineButton = new System.Windows.Forms.Button();
 			this.transparentCheckBox = new System.Windows.Forms.CheckBox();
 			this.editingMethodTabs = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -80,7 +81,6 @@
 			this.darkColorLabel = new System.Windows.Forms.Label();
 			this.transparentToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.addOutlineButton = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.imageControlGroup.SuspendLayout();
 			this.editingMethodTabs.SuspendLayout();
@@ -142,8 +142,8 @@
 			// outlineImageToolStripMenuItem
 			// 
 			this.outlineImageToolStripMenuItem.Name = "outlineImageToolStripMenuItem";
-			this.outlineImageToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
-			| System.Windows.Forms.Keys.O)));
+			this.outlineImageToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.O)));
 			this.outlineImageToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
 			this.outlineImageToolStripMenuItem.Text = "Outline Image...";
 			this.outlineImageToolStripMenuItem.Click += new System.EventHandler(this.outlineImageToolStripMenuItem_Click);
@@ -157,8 +157,8 @@
 			// 
 			// imageLocationTextbox
 			// 
-			this.imageLocationTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.imageLocationTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.imageLocationTextbox.BackColor = System.Drawing.SystemColors.Window;
 			this.imageLocationTextbox.Location = new System.Drawing.Point(97, 11);
 			this.imageLocationTextbox.Name = "imageLocationTextbox";
@@ -204,8 +204,8 @@
 			// 
 			// imageControlGroup
 			// 
-			this.imageControlGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.imageControlGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.imageControlGroup.Controls.Add(this.addOutlineButton);
 			this.imageControlGroup.Controls.Add(this.transparentCheckBox);
 			this.imageControlGroup.Controls.Add(this.imageLocationTextbox);
@@ -218,6 +218,21 @@
 			this.imageControlGroup.TabIndex = 8;
 			this.imageControlGroup.TabStop = false;
 			// 
+			// addOutlineButton
+			// 
+			this.addOutlineButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.addOutlineButton.BackColor = System.Drawing.Color.RoyalBlue;
+			this.addOutlineButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.addOutlineButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.addOutlineButton.ForeColor = System.Drawing.Color.White;
+			this.addOutlineButton.Location = new System.Drawing.Point(856, 11);
+			this.addOutlineButton.Name = "addOutlineButton";
+			this.addOutlineButton.Size = new System.Drawing.Size(70, 20);
+			this.addOutlineButton.TabIndex = 20;
+			this.addOutlineButton.Text = "Add Outline";
+			this.addOutlineButton.UseVisualStyleBackColor = false;
+			this.addOutlineButton.Click += new System.EventHandler(this.addColorButton_Click);
+			// 
 			// transparentCheckBox
 			// 
 			this.transparentCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -228,13 +243,14 @@
 			this.transparentCheckBox.TabIndex = 19;
 			this.transparentCheckBox.Text = "Transparent";
 			this.transparentToolTip.SetToolTip(this.transparentCheckBox, "Check this box if you want your image to be transparent.\r\nWARNING: Only .png file" +
-		"s can be exported in this mode.");
+        "s can be exported in this mode.");
 			this.transparentCheckBox.UseVisualStyleBackColor = true;
+			this.transparentCheckBox.CheckedChanged += new System.EventHandler(this.transparentCheckBox_CheckedChanged);
 			// 
 			// editingMethodTabs
 			// 
-			this.editingMethodTabs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.editingMethodTabs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.editingMethodTabs.Controls.Add(this.tabPage1);
 			this.editingMethodTabs.Controls.Add(this.tabPage2);
 			this.editingMethodTabs.Location = new System.Drawing.Point(0, 27);
@@ -256,8 +272,8 @@
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.Controls.Add(this.baseDropper);
 			this.groupBox1.Controls.Add(this.backgroundButton2);
 			this.groupBox1.Controls.Add(this.backgroundTextBox2);
@@ -463,8 +479,8 @@
 			// 
 			// imageProperties1
 			// 
-			this.imageProperties1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.imageProperties1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.imageProperties1.Controls.Add(this.lightDropper);
 			this.imageProperties1.Controls.Add(this.darkDropper);
 			this.imageProperties1.Controls.Add(this.backgroundButton);
@@ -628,30 +644,15 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.pictureBox1.Location = new System.Drawing.Point(0, 147);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(1009, 503);
 			this.pictureBox1.TabIndex = 10;
 			this.pictureBox1.TabStop = false;
 			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-			// 
-			// addOutlineButton
-			// 
-			this.addOutlineButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.addOutlineButton.BackColor = System.Drawing.Color.RoyalBlue;
-			this.addOutlineButton.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.addOutlineButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.addOutlineButton.ForeColor = System.Drawing.Color.White;
-			this.addOutlineButton.Location = new System.Drawing.Point(856, 11);
-			this.addOutlineButton.Name = "addOutlineButton";
-			this.addOutlineButton.Size = new System.Drawing.Size(70, 20);
-			this.addOutlineButton.TabIndex = 20;
-			this.addOutlineButton.Text = "Add Outline";
-			this.addOutlineButton.UseVisualStyleBackColor = false;
-			this.addOutlineButton.Click += new System.EventHandler(this.addColorButton_Click);
 			// 
 			// ImageOutlinerForm
 			// 

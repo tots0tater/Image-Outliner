@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OutlinerEngine;
+using System.Threading;
 
 namespace Image_Outliner
 {
@@ -33,10 +34,6 @@ namespace Image_Outliner
 			setTextboxColors(m_backgroundColor, backgroundTextBox);
 			setTextboxColors(m_backgroundColor, backgroundTextBox2);
 
-			//Start with droppers disabled.
-			lightDropper.Enabled = false;
-			darkDropper.Enabled = false;
-			baseDropper.Enabled = false;
 			lightDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 			darkDropper.Image = Image_Outliner.Properties.Resources.Dropper;
 			baseDropper.Image = Image_Outliner.Properties.Resources.Dropper;
@@ -385,6 +382,7 @@ namespace Image_Outliner
 				m_outliner.BackgroundColor = m_backgroundColor;
 
 			m_outliner.Outline();
+
 			m_outfile = m_outliner.OutputImage;
 			pictureBox1.Image = m_outfile;
 

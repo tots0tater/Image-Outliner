@@ -300,6 +300,7 @@
 			// baseDropper
 			// 
 			this.baseDropper.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.baseDropper.Enabled = false;
 			this.baseDropper.Location = new System.Drawing.Point(540, 60);
 			this.baseDropper.Name = "baseDropper";
 			this.baseDropper.Size = new System.Drawing.Size(18, 24);
@@ -505,6 +506,7 @@
 			// lightDropper
 			// 
 			this.lightDropper.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.lightDropper.Enabled = false;
 			this.lightDropper.Location = new System.Drawing.Point(677, 53);
 			this.lightDropper.Name = "lightDropper";
 			this.lightDropper.Size = new System.Drawing.Size(18, 24);
@@ -515,6 +517,7 @@
 			// darkDropper
 			// 
 			this.darkDropper.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.darkDropper.Enabled = false;
 			this.darkDropper.Location = new System.Drawing.Point(465, 53);
 			this.darkDropper.Name = "darkDropper";
 			this.darkDropper.Size = new System.Drawing.Size(18, 24);

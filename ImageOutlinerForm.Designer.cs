@@ -43,7 +43,6 @@
 			this.outlineButton = new System.Windows.Forms.Button();
 			this.imageControlGroup = new System.Windows.Forms.GroupBox();
 			this.addOutlineButton = new System.Windows.Forms.Button();
-			this.transparentCheckBox = new System.Windows.Forms.CheckBox();
 			this.editingMethodTabs = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -81,6 +80,8 @@
 			this.darkColorLabel = new System.Windows.Forms.Label();
 			this.transparentToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.transparentCheckBox = new System.Windows.Forms.CheckBox();
+			this.imageSwitchButton = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.imageControlGroup.SuspendLayout();
 			this.editingMethodTabs.SuspendLayout();
@@ -101,7 +102,7 @@
             this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1009, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(1037, 24);
 			this.menuStrip1.TabIndex = 0;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -162,14 +163,14 @@
 			this.imageLocationTextbox.BackColor = System.Drawing.SystemColors.Window;
 			this.imageLocationTextbox.Location = new System.Drawing.Point(97, 11);
 			this.imageLocationTextbox.Name = "imageLocationTextbox";
-			this.imageLocationTextbox.Size = new System.Drawing.Size(627, 20);
+			this.imageLocationTextbox.Size = new System.Drawing.Size(699, 20);
 			this.imageLocationTextbox.TabIndex = 3;
 			this.imageLocationTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.imageLocationTextbox_KeyDown);
 			// 
 			// loadImageButton
 			// 
 			this.loadImageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.loadImageButton.Location = new System.Drawing.Point(730, 10);
+			this.loadImageButton.Location = new System.Drawing.Point(802, 10);
 			this.loadImageButton.Name = "loadImageButton";
 			this.loadImageButton.Size = new System.Drawing.Size(31, 21);
 			this.loadImageButton.TabIndex = 5;
@@ -194,7 +195,7 @@
 			this.outlineButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.outlineButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.outlineButton.ForeColor = System.Drawing.Color.White;
-			this.outlineButton.Location = new System.Drawing.Point(932, 11);
+			this.outlineButton.Location = new System.Drawing.Point(960, 11);
 			this.outlineButton.Name = "outlineButton";
 			this.outlineButton.Size = new System.Drawing.Size(70, 20);
 			this.outlineButton.TabIndex = 7;
@@ -206,15 +207,15 @@
 			// 
 			this.imageControlGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.imageControlGroup.Controls.Add(this.imageSwitchButton);
 			this.imageControlGroup.Controls.Add(this.addOutlineButton);
-			this.imageControlGroup.Controls.Add(this.transparentCheckBox);
 			this.imageControlGroup.Controls.Add(this.imageLocationTextbox);
 			this.imageControlGroup.Controls.Add(this.loadImageButton);
 			this.imageControlGroup.Controls.Add(this.outlineButton);
 			this.imageControlGroup.Controls.Add(this.imageLocationLabel);
-			this.imageControlGroup.Location = new System.Drawing.Point(0, 645);
+			this.imageControlGroup.Location = new System.Drawing.Point(0, 715);
 			this.imageControlGroup.Name = "imageControlGroup";
-			this.imageControlGroup.Size = new System.Drawing.Size(1009, 37);
+			this.imageControlGroup.Size = new System.Drawing.Size(1037, 37);
 			this.imageControlGroup.TabIndex = 8;
 			this.imageControlGroup.TabStop = false;
 			// 
@@ -225,27 +226,13 @@
 			this.addOutlineButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.addOutlineButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.addOutlineButton.ForeColor = System.Drawing.Color.White;
-			this.addOutlineButton.Location = new System.Drawing.Point(856, 11);
+			this.addOutlineButton.Location = new System.Drawing.Point(884, 11);
 			this.addOutlineButton.Name = "addOutlineButton";
 			this.addOutlineButton.Size = new System.Drawing.Size(70, 20);
 			this.addOutlineButton.TabIndex = 20;
 			this.addOutlineButton.Text = "Add Outline";
 			this.addOutlineButton.UseVisualStyleBackColor = false;
 			this.addOutlineButton.Click += new System.EventHandler(this.addColorButton_Click);
-			// 
-			// transparentCheckBox
-			// 
-			this.transparentCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.transparentCheckBox.AutoSize = true;
-			this.transparentCheckBox.Location = new System.Drawing.Point(767, 13);
-			this.transparentCheckBox.Name = "transparentCheckBox";
-			this.transparentCheckBox.Size = new System.Drawing.Size(83, 17);
-			this.transparentCheckBox.TabIndex = 19;
-			this.transparentCheckBox.Text = "Transparent";
-			this.transparentToolTip.SetToolTip(this.transparentCheckBox, "Check this box if you want your image to be transparent.\r\nWARNING: Only .png file" +
-        "s can be exported in this mode.");
-			this.transparentCheckBox.UseVisualStyleBackColor = true;
-			this.transparentCheckBox.CheckedChanged += new System.EventHandler(this.transparentCheckBox_CheckedChanged);
 			// 
 			// editingMethodTabs
 			// 
@@ -256,7 +243,7 @@
 			this.editingMethodTabs.Location = new System.Drawing.Point(0, 27);
 			this.editingMethodTabs.Name = "editingMethodTabs";
 			this.editingMethodTabs.SelectedIndex = 0;
-			this.editingMethodTabs.Size = new System.Drawing.Size(1009, 118);
+			this.editingMethodTabs.Size = new System.Drawing.Size(1037, 141);
 			this.editingMethodTabs.TabIndex = 9;
 			// 
 			// tabPage1
@@ -265,7 +252,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(1001, 92);
+			this.tabPage1.Size = new System.Drawing.Size(1029, 115);
 			this.tabPage1.TabIndex = 1;
 			this.tabPage1.Text = "Outline Method 1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -274,6 +261,7 @@
 			// 
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.transparentCheckBox);
 			this.groupBox1.Controls.Add(this.baseDropper);
 			this.groupBox1.Controls.Add(this.backgroundButton2);
 			this.groupBox1.Controls.Add(this.backgroundTextBox2);
@@ -292,7 +280,7 @@
 			this.groupBox1.Controls.Add(this.trackBarDarkLabel);
 			this.groupBox1.Location = new System.Drawing.Point(3, 3);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(995, 89);
+			this.groupBox1.Size = new System.Drawing.Size(1023, 109);
 			this.groupBox1.TabIndex = 4;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Outline Image Properties";
@@ -301,7 +289,7 @@
 			// 
 			this.baseDropper.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.baseDropper.Enabled = false;
-			this.baseDropper.Location = new System.Drawing.Point(540, 60);
+			this.baseDropper.Location = new System.Drawing.Point(554, 60);
 			this.baseDropper.Name = "baseDropper";
 			this.baseDropper.Size = new System.Drawing.Size(18, 24);
 			this.baseDropper.TabIndex = 23;
@@ -311,7 +299,7 @@
 			// backgroundButton2
 			// 
 			this.backgroundButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.backgroundButton2.Location = new System.Drawing.Point(10, 60);
+			this.backgroundButton2.Location = new System.Drawing.Point(24, 60);
 			this.backgroundButton2.Name = "backgroundButton2";
 			this.backgroundButton2.Size = new System.Drawing.Size(105, 24);
 			this.backgroundButton2.TabIndex = 21;
@@ -322,7 +310,7 @@
 			// backgroundTextBox2
 			// 
 			this.backgroundTextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.backgroundTextBox2.Location = new System.Drawing.Point(6, 36);
+			this.backgroundTextBox2.Location = new System.Drawing.Point(20, 36);
 			this.backgroundTextBox2.Name = "backgroundTextBox2";
 			this.backgroundTextBox2.ReadOnly = true;
 			this.backgroundTextBox2.Size = new System.Drawing.Size(115, 20);
@@ -332,7 +320,7 @@
 			// 
 			this.backgroundLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.backgroundLabel2.AutoSize = true;
-			this.backgroundLabel2.Location = new System.Drawing.Point(16, 20);
+			this.backgroundLabel2.Location = new System.Drawing.Point(30, 20);
 			this.backgroundLabel2.Name = "backgroundLabel2";
 			this.backgroundLabel2.Size = new System.Drawing.Size(95, 13);
 			this.backgroundLabel2.TabIndex = 19;
@@ -341,7 +329,7 @@
 			// outlineColorButton2
 			// 
 			this.outlineColorButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.outlineColorButton2.Location = new System.Drawing.Point(878, 60);
+			this.outlineColorButton2.Location = new System.Drawing.Point(892, 60);
 			this.outlineColorButton2.Name = "outlineColorButton2";
 			this.outlineColorButton2.Size = new System.Drawing.Size(105, 24);
 			this.outlineColorButton2.TabIndex = 18;
@@ -352,7 +340,7 @@
 			// outlineColorTextBox2
 			// 
 			this.outlineColorTextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.outlineColorTextBox2.Location = new System.Drawing.Point(873, 36);
+			this.outlineColorTextBox2.Location = new System.Drawing.Point(887, 36);
 			this.outlineColorTextBox2.Name = "outlineColorTextBox2";
 			this.outlineColorTextBox2.ReadOnly = true;
 			this.outlineColorTextBox2.Size = new System.Drawing.Size(115, 20);
@@ -361,7 +349,7 @@
 			// lightColorTextBox2
 			// 
 			this.lightColorTextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.lightColorTextBox2.Location = new System.Drawing.Point(693, 36);
+			this.lightColorTextBox2.Location = new System.Drawing.Point(707, 36);
 			this.lightColorTextBox2.Name = "lightColorTextBox2";
 			this.lightColorTextBox2.ReadOnly = true;
 			this.lightColorTextBox2.Size = new System.Drawing.Size(115, 20);
@@ -371,7 +359,7 @@
 			// 
 			this.trackBarLightLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.trackBarLightLabel.AutoSize = true;
-			this.trackBarLightLabel.Location = new System.Drawing.Point(722, 22);
+			this.trackBarLightLabel.Location = new System.Drawing.Point(736, 22);
 			this.trackBarLightLabel.Name = "trackBarLightLabel";
 			this.trackBarLightLabel.Size = new System.Drawing.Size(60, 13);
 			this.trackBarLightLabel.TabIndex = 15;
@@ -380,7 +368,7 @@
 			// darkColorTextBox2
 			// 
 			this.darkColorTextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.darkColorTextBox2.Location = new System.Drawing.Point(185, 36);
+			this.darkColorTextBox2.Location = new System.Drawing.Point(199, 36);
 			this.darkColorTextBox2.Name = "darkColorTextBox2";
 			this.darkColorTextBox2.ReadOnly = true;
 			this.darkColorTextBox2.Size = new System.Drawing.Size(115, 20);
@@ -392,7 +380,7 @@
 			this.rightTrackBar.BackColor = System.Drawing.SystemColors.Window;
 			this.rightTrackBar.Enabled = false;
 			this.rightTrackBar.LargeChange = 10;
-			this.rightTrackBar.Location = new System.Drawing.Point(561, 32);
+			this.rightTrackBar.Location = new System.Drawing.Point(575, 32);
 			this.rightTrackBar.Maximum = 200;
 			this.rightTrackBar.Name = "rightTrackBar";
 			this.rightTrackBar.Size = new System.Drawing.Size(126, 45);
@@ -407,7 +395,7 @@
 			this.leftTrackBar.BackColor = System.Drawing.SystemColors.Window;
 			this.leftTrackBar.Enabled = false;
 			this.leftTrackBar.LargeChange = 10;
-			this.leftTrackBar.Location = new System.Drawing.Point(307, 32);
+			this.leftTrackBar.Location = new System.Drawing.Point(321, 32);
 			this.leftTrackBar.Maximum = 200;
 			this.leftTrackBar.Name = "leftTrackBar";
 			this.leftTrackBar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -421,7 +409,7 @@
 			// 
 			this.trackBarOutlineLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.trackBarOutlineLabel.AutoSize = true;
-			this.trackBarOutlineLabel.Location = new System.Drawing.Point(897, 22);
+			this.trackBarOutlineLabel.Location = new System.Drawing.Point(911, 22);
 			this.trackBarOutlineLabel.Name = "trackBarOutlineLabel";
 			this.trackBarOutlineLabel.Size = new System.Drawing.Size(70, 13);
 			this.trackBarOutlineLabel.TabIndex = 9;
@@ -430,7 +418,7 @@
 			// baseColorButton
 			// 
 			this.baseColorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.baseColorButton.Location = new System.Drawing.Point(436, 60);
+			this.baseColorButton.Location = new System.Drawing.Point(450, 60);
 			this.baseColorButton.Name = "baseColorButton";
 			this.baseColorButton.Size = new System.Drawing.Size(105, 24);
 			this.baseColorButton.TabIndex = 8;
@@ -441,7 +429,7 @@
 			// baseColorTextBox
 			// 
 			this.baseColorTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.baseColorTextBox.Location = new System.Drawing.Point(439, 36);
+			this.baseColorTextBox.Location = new System.Drawing.Point(453, 36);
 			this.baseColorTextBox.Name = "baseColorTextBox";
 			this.baseColorTextBox.ReadOnly = true;
 			this.baseColorTextBox.Size = new System.Drawing.Size(115, 20);
@@ -451,7 +439,7 @@
 			// 
 			this.baseColorLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.baseColorLabel.AutoSize = true;
-			this.baseColorLabel.Location = new System.Drawing.Point(466, 22);
+			this.baseColorLabel.Location = new System.Drawing.Point(480, 22);
 			this.baseColorLabel.Name = "baseColorLabel";
 			this.baseColorLabel.Size = new System.Drawing.Size(61, 13);
 			this.baseColorLabel.TabIndex = 4;
@@ -461,7 +449,7 @@
 			// 
 			this.trackBarDarkLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.trackBarDarkLabel.AutoSize = true;
-			this.trackBarDarkLabel.Location = new System.Drawing.Point(214, 22);
+			this.trackBarDarkLabel.Location = new System.Drawing.Point(228, 22);
 			this.trackBarDarkLabel.Name = "trackBarDarkLabel";
 			this.trackBarDarkLabel.Size = new System.Drawing.Size(60, 13);
 			this.trackBarDarkLabel.TabIndex = 2;
@@ -473,7 +461,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(1001, 92);
+			this.tabPage2.Size = new System.Drawing.Size(1003, 115);
 			this.tabPage2.TabIndex = 0;
 			this.tabPage2.Text = "Outline Method 2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -498,7 +486,7 @@
 			this.imageProperties1.Controls.Add(this.darkColorLabel);
 			this.imageProperties1.Location = new System.Drawing.Point(3, 3);
 			this.imageProperties1.Name = "imageProperties1";
-			this.imageProperties1.Size = new System.Drawing.Size(995, 100);
+			this.imageProperties1.Size = new System.Drawing.Size(995, 109);
 			this.imageProperties1.TabIndex = 2;
 			this.imageProperties1.TabStop = false;
 			this.imageProperties1.Text = "Outline Image Properties";
@@ -507,7 +495,7 @@
 			// 
 			this.lightDropper.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.lightDropper.Enabled = false;
-			this.lightDropper.Location = new System.Drawing.Point(677, 53);
+			this.lightDropper.Location = new System.Drawing.Point(677, 58);
 			this.lightDropper.Name = "lightDropper";
 			this.lightDropper.Size = new System.Drawing.Size(18, 24);
 			this.lightDropper.TabIndex = 24;
@@ -518,7 +506,7 @@
 			// 
 			this.darkDropper.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.darkDropper.Enabled = false;
-			this.darkDropper.Location = new System.Drawing.Point(465, 53);
+			this.darkDropper.Location = new System.Drawing.Point(465, 58);
 			this.darkDropper.Name = "darkDropper";
 			this.darkDropper.Size = new System.Drawing.Size(18, 24);
 			this.darkDropper.TabIndex = 23;
@@ -528,7 +516,7 @@
 			// backgroundButton
 			// 
 			this.backgroundButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.backgroundButton.Location = new System.Drawing.Point(155, 53);
+			this.backgroundButton.Location = new System.Drawing.Point(155, 58);
 			this.backgroundButton.Name = "backgroundButton";
 			this.backgroundButton.Size = new System.Drawing.Size(100, 24);
 			this.backgroundButton.TabIndex = 17;
@@ -539,7 +527,7 @@
 			// backgroundTextBox
 			// 
 			this.backgroundTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.backgroundTextBox.Location = new System.Drawing.Point(149, 31);
+			this.backgroundTextBox.Location = new System.Drawing.Point(149, 36);
 			this.backgroundTextBox.Name = "backgroundTextBox";
 			this.backgroundTextBox.ReadOnly = true;
 			this.backgroundTextBox.Size = new System.Drawing.Size(115, 20);
@@ -549,7 +537,7 @@
 			// 
 			this.backgroundColorLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.backgroundColorLabel.AutoSize = true;
-			this.backgroundColorLabel.Location = new System.Drawing.Point(48, 34);
+			this.backgroundColorLabel.Location = new System.Drawing.Point(48, 39);
 			this.backgroundColorLabel.Name = "backgroundColorLabel";
 			this.backgroundColorLabel.Size = new System.Drawing.Size(95, 13);
 			this.backgroundColorLabel.TabIndex = 15;
@@ -558,7 +546,7 @@
 			// lightColorButton
 			// 
 			this.lightColorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.lightColorButton.Location = new System.Drawing.Point(578, 53);
+			this.lightColorButton.Location = new System.Drawing.Point(578, 58);
 			this.lightColorButton.Name = "lightColorButton";
 			this.lightColorButton.Size = new System.Drawing.Size(100, 24);
 			this.lightColorButton.TabIndex = 14;
@@ -569,7 +557,7 @@
 			// lightColorTextBox
 			// 
 			this.lightColorTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.lightColorTextBox.Location = new System.Drawing.Point(579, 31);
+			this.lightColorTextBox.Location = new System.Drawing.Point(579, 36);
 			this.lightColorTextBox.Name = "lightColorTextBox";
 			this.lightColorTextBox.ReadOnly = true;
 			this.lightColorTextBox.Size = new System.Drawing.Size(115, 20);
@@ -579,7 +567,7 @@
 			// 
 			this.lightColorLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.lightColorLabel.AutoSize = true;
-			this.lightColorLabel.Location = new System.Drawing.Point(519, 34);
+			this.lightColorLabel.Location = new System.Drawing.Point(519, 39);
 			this.lightColorLabel.Name = "lightColorLabel";
 			this.lightColorLabel.Size = new System.Drawing.Size(60, 13);
 			this.lightColorLabel.TabIndex = 12;
@@ -588,7 +576,7 @@
 			// outlineColorButton
 			// 
 			this.outlineColorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.outlineColorButton.Location = new System.Drawing.Point(813, 53);
+			this.outlineColorButton.Location = new System.Drawing.Point(813, 58);
 			this.outlineColorButton.Name = "outlineColorButton";
 			this.outlineColorButton.Size = new System.Drawing.Size(100, 24);
 			this.outlineColorButton.TabIndex = 11;
@@ -599,7 +587,7 @@
 			// outlineColorTextBox
 			// 
 			this.outlineColorTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.outlineColorTextBox.Location = new System.Drawing.Point(806, 31);
+			this.outlineColorTextBox.Location = new System.Drawing.Point(806, 36);
 			this.outlineColorTextBox.Name = "outlineColorTextBox";
 			this.outlineColorTextBox.ReadOnly = true;
 			this.outlineColorTextBox.Size = new System.Drawing.Size(115, 20);
@@ -609,7 +597,7 @@
 			// 
 			this.outlineColorLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.outlineColorLabel.AutoSize = true;
-			this.outlineColorLabel.Location = new System.Drawing.Point(730, 34);
+			this.outlineColorLabel.Location = new System.Drawing.Point(730, 39);
 			this.outlineColorLabel.Name = "outlineColorLabel";
 			this.outlineColorLabel.Size = new System.Drawing.Size(70, 13);
 			this.outlineColorLabel.TabIndex = 9;
@@ -618,7 +606,7 @@
 			// darkColorButton
 			// 
 			this.darkColorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.darkColorButton.Location = new System.Drawing.Point(366, 53);
+			this.darkColorButton.Location = new System.Drawing.Point(366, 58);
 			this.darkColorButton.Name = "darkColorButton";
 			this.darkColorButton.Size = new System.Drawing.Size(100, 24);
 			this.darkColorButton.TabIndex = 8;
@@ -629,7 +617,7 @@
 			// darkColorTextBox
 			// 
 			this.darkColorTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.darkColorTextBox.Location = new System.Drawing.Point(367, 31);
+			this.darkColorTextBox.Location = new System.Drawing.Point(367, 36);
 			this.darkColorTextBox.Name = "darkColorTextBox";
 			this.darkColorTextBox.ReadOnly = true;
 			this.darkColorTextBox.Size = new System.Drawing.Size(115, 20);
@@ -639,7 +627,7 @@
 			// 
 			this.darkColorLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.darkColorLabel.AutoSize = true;
-			this.darkColorLabel.Location = new System.Drawing.Point(302, 34);
+			this.darkColorLabel.Location = new System.Drawing.Point(302, 39);
 			this.darkColorLabel.Name = "darkColorLabel";
 			this.darkColorLabel.Size = new System.Drawing.Size(60, 13);
 			this.darkColorLabel.TabIndex = 4;
@@ -650,18 +638,47 @@
 			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox1.Location = new System.Drawing.Point(0, 147);
+			this.pictureBox1.Location = new System.Drawing.Point(0, 170);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(1009, 503);
+			this.pictureBox1.Size = new System.Drawing.Size(1037, 550);
 			this.pictureBox1.TabIndex = 10;
 			this.pictureBox1.TabStop = false;
 			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+			// 
+			// transparentCheckBox
+			// 
+			this.transparentCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.transparentCheckBox.AutoSize = true;
+			this.transparentCheckBox.Location = new System.Drawing.Point(35, 86);
+			this.transparentCheckBox.Name = "transparentCheckBox";
+			this.transparentCheckBox.Size = new System.Drawing.Size(83, 17);
+			this.transparentCheckBox.TabIndex = 24;
+			this.transparentCheckBox.Text = "Transparent";
+			this.transparentToolTip.SetToolTip(this.transparentCheckBox, "Check this box if you want your image to be transparent.\r\nWARNING: Only .png file" +
+        "s can be exported in this mode.");
+			this.transparentCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// imageSwitchButton
+			// 
+			this.imageSwitchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.imageSwitchButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+			this.imageSwitchButton.Enabled = false;
+			this.imageSwitchButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+			this.imageSwitchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.imageSwitchButton.Location = new System.Drawing.Point(846, 11);
+			this.imageSwitchButton.Name = "imageSwitchButton";
+			this.imageSwitchButton.Size = new System.Drawing.Size(32, 20);
+			this.imageSwitchButton.TabIndex = 21;
+			this.imageSwitchButton.TabStop = false;
+			this.imageSwitchButton.UseVisualStyleBackColor = false;
+			this.imageSwitchButton.MouseLeave += new System.EventHandler(this.imageSwitchButton_MouseLeave);
+			this.imageSwitchButton.MouseHover += new System.EventHandler(this.imageSwitchButton_MouseHover);
 			// 
 			// ImageOutlinerForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1009, 682);
+			this.ClientSize = new System.Drawing.Size(1037, 752);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.editingMethodTabs);
 			this.Controls.Add(this.imageControlGroup);
@@ -708,7 +725,6 @@
 		private System.Windows.Forms.TabControl editingMethodTabs;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.CheckBox transparentCheckBox;
 		private System.Windows.Forms.ToolTip transparentToolTip;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.GroupBox groupBox1;
@@ -744,6 +760,8 @@
 		private System.Windows.Forms.TextBox darkColorTextBox;
 		private System.Windows.Forms.Label darkColorLabel;
 		private System.Windows.Forms.Button addOutlineButton;
+		private System.Windows.Forms.Button imageSwitchButton;
+		private System.Windows.Forms.CheckBox transparentCheckBox;
 	}
 }
 

@@ -220,6 +220,10 @@ namespace Image_Outliner
 		/// <param name="textBox"></param>
 		void setTextboxColors(Color backgroundColor, TextBox textBox)
 		{
+			// The user selected a transparent background
+			if (backgroundColor.ToArgb() == 0)
+				return;
+
 			textBox.BackColor = backgroundColor;
 			// Sets the font color to be visible on the text box's background
 			if (backgroundColor.R + backgroundColor.G + backgroundColor.B > 500)
@@ -390,8 +394,10 @@ namespace Image_Outliner
 			m_outliner.Reset();
 
 			saveImageToolStripMenuItem.Enabled = true;
+			imageSwitchButton.Enabled = true;
 		}
 
+		#region Dropper Code
 		private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
 		{
 			if (!m_selectingColor) return;
@@ -540,6 +546,7 @@ namespace Image_Outliner
 
 			lightDropper.Image = Image_Outliner.Properties.Resources.Cancel;
 		}
+		#endregion 
 
 		/// <summary>
 		/// Disables or enables all UI elements depending on the character passed in
@@ -601,7 +608,19 @@ namespace Image_Outliner
 				setTextboxColors(Color.White, backgroundTextBox);
 				setTextboxColors(Color.White, backgroundTextBox2);
 			}
-				
+
+		}
+
+		private void imageSwitchButton_MouseHover(object sender, EventArgs e)
+		{
+			imageSwitchButton.BackColor = SystemColors.GradientActiveCaption;
+			pictureBox1.Image = m_outliner.InputImage;
+		}
+
+		private void imageSwitchButton_MouseLeave(object sender, EventArgs e)
+		{
+			imageSwitchButton.BackColor = SystemColors.GradientInactiveCaption;
+			pictureBox1.Image = m_outfile;
 		}
 	}
 }
